@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from './Icons';
+import { ArrowRightIcon, EcosystemConnector } from './Icons';
 import './Hero.css';
 
 export default function Hero() {
@@ -38,12 +38,16 @@ export default function Hero() {
                 <span className="hero__eco-tag">Holding</span>
                 <span className="hero__eco-name">Blue Sky Group</span>
               </div>
-              <span className="hero__eco-arrow" aria-hidden="true">→</span>
+              <span className="hero__eco-arrow" aria-hidden="true">
+                <EcosystemConnector />
+              </span>
               <div className="hero__eco-node hero__eco-node--active">
                 <span className="hero__eco-tag hero__eco-tag--active">Servicio activo</span>
                 <span className="hero__eco-name">Blue Sky Prospect</span>
               </div>
-              <span className="hero__eco-arrow" aria-hidden="true">→</span>
+              <span className="hero__eco-arrow" aria-hidden="true">
+                <EcosystemConnector />
+              </span>
               <div className="hero__eco-node hero__eco-node--future">
                 <span className="hero__eco-tag">Próxima implementación</span>
                 <span className="hero__eco-name">Blue Sky Commerce</span>

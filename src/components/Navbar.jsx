@@ -4,6 +4,7 @@ import './Navbar.css';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -58,9 +59,28 @@ export default function Navbar() {
             </a>
           </li>
 
-          <li className="navbar__dropdown-wrapper">
-            <span className="navbar__link navbar__link--has-dropdown">Servicios</span>
-            <div className="navbar__dropdown">
+          <li
+            className="navbar__dropdown-wrapper"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+            onFocus={() => setServicesOpen(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setServicesOpen(false);
+              }
+            }}
+          >
+            <button
+              className="navbar__link navbar__link--has-dropdown"
+              type="button"
+              aria-expanded={servicesOpen}
+              aria-controls="navbar-services-menu"
+              onFocus={() => setServicesOpen(true)}
+              onClick={() => setServicesOpen(true)}
+            >
+              Servicios
+            </button>
+            <div className="navbar__dropdown" id="navbar-services-menu">
               <a href="#blue-sky-prospect" className="navbar__dropdown-link">
                 Blue Sky Prospect
               </a>

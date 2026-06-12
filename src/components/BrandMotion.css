@@ -1,0 +1,45 @@
+.brand-motion {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.brand-motion__text {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: var(--brand-title-font-size);
+  font-weight: var(--brand-title-font-weight);
+  line-height: var(--brand-title-line-height);
+  letter-spacing: var(--brand-title-letter-spacing);
+  text-transform: uppercase;
+  text-align: left;
+  opacity: 0;
+  transform-origin: left top;
+  will-change: transform, opacity;
+  text-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+.brand-motion__line {
+  display: block;
+}
+
+.brand-motion--toHero .brand-motion__text {
+  text-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .brand-motion__text {
+    text-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-motion__text {
+    transition: none !important;
+  }
+}

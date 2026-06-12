@@ -1,3 +1,47 @@
+# Secuencia de marca en 3 estados: Intro → Hero → Navbar (iteración 17)
+
+Animación principal de marca: `Intro central → Hero arriba a la izquierda → Navbar compacto al scrollear`. Construida sobre lo ya aprobado (lógica de scroll, links con transform, desvanecimiento mobile). No se hizo push ni deploy.
+
+## 1. Archivos modificados
+
+- `src/components/IntroSplash.jsx` — al ocultarse el splash agrega la clase global **`.is-intro-complete`** en `<html>` (también en el camino de `prefers-reduced-motion`).
+- `src/components/IntroSplash.css` — **salida del texto con scale/fade**: `.intro-splash--hidden .intro-splash__text { opacity: 0; transform: scale(0.9) translateY(-20px) }` con transición 600ms. Detalle técnico: `animation: none` libera el `fill: forwards` de `introPulse`, cuyos valores pisarían la transición (el estado base coincide con el último keyframe, así que no hay salto).
+- `src/components/Hero.css` — **entrada decorativa del título** (`heroTitleSettle`, 600ms, settle desde +18px) disparada por `.is-intro-complete:not(.is-scrolled)`. Sin `fill: forwards`: al terminar vuelven a mandar los estilos normales y el estado `.is-scrolled` no queda pisado. Si JS falla, no hay clase y el título es visible desde el inicio.
+- `src/components/Navbar.css` — `.mobile-menu__brand` en mayúsculas (weight 800, 16px, tracking +0.02em), consistente con la marca del navbar.
+- `capture.cjs` — aliases de capturas con los nombres requeridos.
+
+## 2. Secuencia validada (medida con Puppeteer en 1440/1024/768/430/390px)
+
+1. **Intro**: `BLUE SKY GROUP` centrado exacto (cx = mitad del viewport), fondo azul, texto blanco.
+2. **Salida** (~1.2s–1.8s): texto a `opacity: 0` con `scale(0.9) translateY(-20px)` en transición real (no corte), overlay desvaneciéndose en paralelo.
+3. **Hero**: `.is-intro-complete` presente, splash desmontado del DOM, título `BLUE SKY / GROUP` arriba a la izquierda con settle suave, **links a la derecha** (1200/1440 · 784/1024), CTA extremo derecho.
+4. **Scrolled**: título grande `opacity 0.18` (desktop) / `0` (mobile), marca chica `BLUE SKY GROUP` aparece (`opacity 0→1`), links deslizados al centro con transform, CTA a la derecha.
+5. **Menú mobile abierto**: `BLUE SKY GROUP` uppercase arriba a la izquierda, X funcional, links numerados, CTA.
+
+Sin overflow horizontal ni errores de consola en ningún ancho.
+
+## 3. `npm run build`
+
+OK — 199ms, 0 errores.
+
+## 4. Capturas
+
+![Desktop Intro](./review-screenshots/desktop-intro.png)
+![Desktop Hero tras intro](./review-screenshots/desktop-hero-after-intro.png)
+![Desktop Navbar Scrolled](./review-screenshots/desktop-navbar-scrolled.png)
+![Mobile Intro](./review-screenshots/mobile-intro.png)
+![Mobile Hero tras intro](./review-screenshots/mobile-hero-after-intro.png)
+![Mobile Navbar Scrolled](./review-screenshots/mobile-hero-scrolled.png)
+![Mobile Menú abierto](./review-screenshots/mobile-menu-open.png)
+
+## 5. Pendientes reales
+
+- Ninguno de este cambio.
+
+Nota de entorno: `puppeteer` (dev-tool de capturas, fuera de package.json) había sido podado por un `npm install`; se reinstaló con `--no-save`.
+
+---
+
 # Rollback de la iteración 15 (iteración 16)
 
 Se revirtió quirúrgicamente el ajuste de la iteración 15 (subir el título grande con compensación de top bearing). No se hizo push ni deploy.

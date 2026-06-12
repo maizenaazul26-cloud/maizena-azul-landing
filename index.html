@@ -20,13 +20,36 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <style>
+        @font-face { font-family: Inter; font-style: normal; font-weight: 300 900; font-display: swap; src: url('/fonts/inter-latin.woff2') format('woff2'); }
+        body { margin: 0; font-family: Inter, Arial, sans-serif; background: #eef0f4; color: #0a0a0a; }
+        .noscript-hero { min-height: 100vh; background: #066fee; color: #fff; padding: 96px 32px 72px; }
+        .noscript-wrap { max-width: 1100px; margin: 0 auto; }
+        .noscript-title { margin: 0 0 48px; font-size: clamp(64px, 12vw, 160px); line-height: .9; letter-spacing: -.05em; text-transform: uppercase; font-weight: 900; }
+        .noscript-copy { max-width: 620px; border-left: 2px solid rgba(255,255,255,.25); padding-left: 28px; font-size: 18px; line-height: 1.7; }
+        .noscript-section { padding: 96px 32px; }
+        .noscript-section h2 { max-width: 1100px; margin: 0 auto 24px; font-size: clamp(40px, 8vw, 88px); line-height: .95; letter-spacing: -.03em; text-transform: uppercase; }
+        .noscript-section p { max-width: 720px; margin: 0 auto; color: #555; font-size: 18px; line-height: 1.75; }
+      </style>
+      <main>
+        <section class="noscript-hero">
+          <div class="noscript-wrap">
+            <h1 class="noscript-title">Blue Sky<br />Group</h1>
+            <div class="noscript-copy">
+              <strong>Holding de soluciones comerciales para empresas.</strong>
+              <p>Desarrollamos servicios e infraestructura comercial para ayudar a empresas a crecer, ordenar procesos y conectar mejor con sus mercados.</p>
+            </div>
+          </div>
+        </section>
+        <section class="noscript-section"><h2>Blue Sky Prospect</h2><p>Servicio activo para identificar, calificar y activar oportunidades comerciales B2B.</p></section>
+        <section class="noscript-section"><h2>Blue Sky Commerce</h2><p>Próxima implementación del ecosistema comercial de Blue Sky Group.</p></section>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

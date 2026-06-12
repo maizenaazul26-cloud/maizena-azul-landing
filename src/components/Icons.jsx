@@ -34,6 +34,27 @@ export function ArrowRightIcon({ size = 20, color = 'currentColor' }) {
   );
 }
 
+export function EcosystemConnector({ direction = 'horizontal' }) {
+  const isVertical = direction === 'vertical';
+  return (
+    <svg
+      className={`ecosystem-connector ecosystem-connector--${direction}`}
+      width={isVertical ? 24 : 42}
+      height={isVertical ? 28 : 12}
+      viewBox={isVertical ? '0 0 24 28' : '0 0 42 12'}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {isVertical ? (
+        <path d="M12 2v22m0 0 4-4m-4 4-4-4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+      ) : (
+        <path d="M2 6h36m0 0-4-4m4 4-4 4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+      )}
+    </svg>
+  );
+}
+
 export function CheckIcon({ size = 18, color = THEME.primary }) {
   return (
     <svg width={size} height={size} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
