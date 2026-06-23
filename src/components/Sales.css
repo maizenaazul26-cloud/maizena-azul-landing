@@ -1,19 +1,19 @@
 /* ═══════════════════════════════════════════════
-   PROSPECT — Primary service section
+   SALES — B2B sales unit
    ═══════════════════════════════════════════════ */
 
-.prospect {
+.sales {
   padding: var(--section-padding);
   background: var(--bg-body);
   position: relative;
 }
 
 /* ── Header (editorial, izquierda) ─────────── */
-.prospect__header {
+.sales__header {
   margin-bottom: 72px;
 }
 
-.prospect__badge {
+.sales__badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -29,17 +29,17 @@
   margin-bottom: 24px;
 }
 
-.prospect__badge::before {
+.sales__badge::before {
   content: '●';
   font-size: 8px;
 }
 
-.prospect__intro {
+.sales__intro {
   max-width: 760px;
   margin-top: 8px;
 }
 
-.prospect__tagline {
+.sales__tagline {
   font-size: 22px;
   font-weight: 700;
   color: var(--primary);
@@ -49,14 +49,14 @@
 }
 
 /* ── Benefits grid ─────────────────────────── */
-.prospect__grid {
+.sales__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 64px;
 }
 
-/* ── Benefit card ──────────────────────────── */
+/* ── Benefit card (shared with Forge) ──────── */
 .benefit-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -104,12 +104,18 @@
   color: var(--text-body);
 }
 
+@media (max-width: 768px) {
+  .benefit-card {
+    padding: 24px;
+  }
+}
+
 /* ── CTA ───────────────────────────────────── */
-.prospect__cta-wrap {
+.sales__cta-wrap {
   text-align: center;
 }
 
-.prospect__cta {
+.sales__cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -122,7 +128,7 @@
   transition: all var(--transition-base);
 }
 
-.prospect__cta:hover {
+.sales__cta:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(6, 111, 238, 0.2);
@@ -130,21 +136,17 @@
 
 /* ── Responsive ────────────────────────────── */
 @media (max-width: 1024px) {
-  .prospect__grid {
+  .sales__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .prospect__grid {
+  .sales__grid {
     grid-template-columns: 1fr;
   }
 
-  .prospect__tagline {
+  .sales__tagline {
     font-size: 18px;
-  }
-
-  .benefit-card {
-    padding: 24px;
   }
 }

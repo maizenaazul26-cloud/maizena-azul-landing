@@ -1,4 +1,4 @@
-import { PROSPECT_STEPS } from '../constants/theme';
+import { SALES_STEPS } from '../constants/theme';
 import './HowItWorks.css';
 
 export default function HowItWorks() {
@@ -6,15 +6,15 @@ export default function HowItWorks() {
     <section className="how" id="how-it-works">
       <div className="container">
         <div className="how__header">
-          <span className="section-label">05 — PROCESO DE BLUE SKY PROSPECT</span>
+          <span className="section-label">06 — PROCESO DE BLUE SKY SALES</span>
           <div className="section-divider" />
           <h2 className="section-heading how__heading">
-            UN PROCESO AGÉNTICO<br/>PARA ORDENAR LA<br/>PROSPECCIÓN COMERCIAL.
+            UN PROCESO AGÉNTICO<br/>PARA ORDENAR LAS<br/>VENTAS B2B.
           </h2>
         </div>
 
         <div className="how__steps">
-          {PROSPECT_STEPS.map((step) => (
+          {SALES_STEPS.map((step) => (
             <div key={step.number} className="how__step">
               <div className="how__step-number">{step.number}</div>
               <div className="how__step-content">

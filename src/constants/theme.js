@@ -12,10 +12,10 @@ export const THEME = {
   bgCard: 'rgba(255, 255, 255, 0.7)',
 };
 
-export const PROSPECT_BENEFITS = [
+export const SALES_BENEFITS = [
   {
     id: 'identify',
-    title: 'Identificación de empresas objetivo',
+    title: 'Identificación de cuentas objetivo',
     description: 'Encontrá las empresas que realmente encajan con tu propuesta comercial.',
     icon: 'target',
   },
@@ -27,7 +27,7 @@ export const PROSPECT_BENEFITS = [
   },
   {
     id: 'qualify',
-    title: 'Calificación de oportunidades',
+    title: 'Scoring de oportunidades',
     description: 'Priorizá los leads con mayor potencial y mejor fit comercial.',
     icon: 'qualify',
   },
@@ -39,7 +39,7 @@ export const PROSPECT_BENEFITS = [
   },
   {
     id: 'organize',
-    title: 'Organización del proceso comercial',
+    title: 'Seguimiento ordenado',
     description: 'Estructura clara para que tu equipo no pierda oportunidades.',
     icon: 'organize',
   },
@@ -51,10 +51,10 @@ export const PROSPECT_BENEFITS = [
   },
 ];
 
-export const PROSPECT_STEPS = [
+export const SALES_STEPS = [
   {
     number: '01',
-    title: 'Identificamos empresas objetivo',
+    title: 'Identificamos cuentas objetivo',
     description: 'Detectamos compañías que encajan con el perfil comercial buscado.',
   },
   {
@@ -64,8 +64,8 @@ export const PROSPECT_STEPS = [
   },
   {
     number: '03',
-    title: 'Calificamos oportunidades',
-    description: 'Priorizamos prospectos según fit, potencial y oportunidad.',
+    title: 'Priorizamos oportunidades',
+    description: 'Aplicamos scoring según fit, potencial y oportunidad.',
   },
   {
     number: '04',
@@ -74,14 +74,76 @@ export const PROSPECT_STEPS = [
   },
 ];
 
+export const FORGE_BENEFITS = [
+  {
+    id: 'capture',
+    title: 'Captura de consultas',
+    description: 'Landing o formulario para que ninguna consulta comercial se pierda por WhatsApp o email.',
+    icon: 'capture',
+  },
+  {
+    id: 'database',
+    title: 'Base de leads ordenada',
+    description: 'Un lugar único donde quedan registradas las consultas, en vez de dispersas entre planillas y chats.',
+    icon: 'database',
+  },
+  {
+    id: 'notify',
+    title: 'Notificaciones y alertas',
+    description: 'Avisos automáticos cuando llega una consulta nueva, para que el seguimiento empiece a tiempo.',
+    icon: 'notify',
+  },
+  {
+    id: 'dashboard',
+    title: 'Tablero simple',
+    description: 'Visibilidad básica sobre el estado de cada consulta y oportunidad, sin depender de la memoria del equipo.',
+    icon: 'dashboard',
+  },
+  {
+    id: 'automate',
+    title: 'Automatizaciones operativas',
+    description: 'Tareas repetitivas que se ejecutan solas: derivar, clasificar, recordar próximos pasos.',
+    icon: 'automate',
+  },
+  {
+    id: 'integrate',
+    title: 'Integraciones livianas',
+    description: 'Conexión simple con las herramientas que la empresa ya usa, sin desarrollos a medida innecesarios.',
+    icon: 'integrate',
+  },
+];
+
+export const FORGE_STEPS = [
+  {
+    number: '01',
+    title: 'Relevamos el desorden actual',
+    description: 'Identificamos dónde se pierden consultas y qué procesos dependen de WhatsApp, Excel o memoria humana.',
+  },
+  {
+    number: '02',
+    title: 'Diseñamos un sistema simple',
+    description: 'Definimos la implementación mínima necesaria: captura, base de datos y seguimiento.',
+  },
+  {
+    number: '03',
+    title: 'Implementamos la solución',
+    description: 'Montamos landing, formulario, base de leads, notificaciones y tablero según lo que la empresa necesite.',
+  },
+  {
+    number: '04',
+    title: 'Ordenamos seguimiento y medición',
+    description: 'Dejamos un proceso medible, con próximos pasos claros y guía de uso para el equipo.',
+  },
+];
+
 export const AGENT_SYSTEM_CARDS = [
   {
-    title: 'Prospección asistida',
+    title: 'Investigación comercial asistida',
     description: 'Identificación de empresas y contactos relevantes según criterios comerciales.',
   },
   {
     title: 'CRM comercial',
-    description: 'Organización de prospectos, oportunidades y estados de avance.',
+    description: 'Organización de cuentas, oportunidades y estados de avance.',
   },
   {
     title: 'Agentes 24/7',
@@ -93,7 +155,7 @@ export const AGENT_SYSTEM_CARDS = [
   },
   {
     title: 'Priorización de oportunidades',
-    description: 'Ordenamiento de prospectos según fit, potencial y etapa comercial.',
+    description: 'Ordenamiento de cuentas según fit, potencial y etapa comercial.',
   },
   {
     title: 'Seguimiento ordenado',

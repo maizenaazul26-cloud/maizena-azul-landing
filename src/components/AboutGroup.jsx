@@ -12,20 +12,23 @@ export default function AboutGroup() {
             BLUE SKY GROUP<br/>
             ES UN HOLDING<br/>
             DE SOLUCIONES<br/>
-            COMERCIALES.
+            COMERCIALES Y<br/>
+            TECNOLÓGICAS.
           </h2>
 
           <div className="about__grid">
             <div className="about__content">
               <p className="section-body">
-                Blue Sky Group desarrolla empresas y servicios orientados a resolver
-                problemas comerciales concretos para organizaciones que buscan crecer,
-                ordenar sus procesos y conectar mejor con sus mercados.
+                Blue Sky Group es un holding orientado a crear y operar soluciones comerciales,
+                tecnológicas y digitales para empresas. Desde sus unidades, transforma procesos
+                dispersos —prospección, seguimiento, captación de consultas, automatización e
+                implementación tecnológica— en sistemas más ordenados, medibles y accionables.
               </p>
               <p className="section-body" style={{ marginTop: '16px' }}>
-                El ecosistema comienza con <strong>Blue Sky Prospect</strong>, nuestro primer
-                servicio activo, y evolucionará con <strong>Blue Sky Commerce</strong> y nuevas
-                soluciones comerciales en desarrollo.
+                Hoy el grupo concentra su actividad en <strong>Blue Sky Forge</strong>, unidad de
+                implementación tecnológica, y <strong>Blue Sky Sales</strong>, unidad comercial
+                enfocada en ventas B2B asistidas por IA y control humano. <strong>Blue Sky
+                Commerce</strong> representa la próxima construcción del ecosistema.
               </p>
             </div>
 
@@ -33,8 +36,16 @@ export default function AboutGroup() {
               <div className="about__marker">
                 <div className="about__marker-dot about__marker-dot--active" />
                 <div className="about__marker-content">
-                  <span className="about__marker-label">Servicio activo</span>
-                  <span className="about__marker-name">Blue Sky Prospect</span>
+                  <span className="about__marker-label">Unidad activa</span>
+                  <span className="about__marker-name">Blue Sky Forge</span>
+                </div>
+              </div>
+              <div className="about__marker-line" />
+              <div className="about__marker">
+                <div className="about__marker-dot about__marker-dot--active" />
+                <div className="about__marker-content">
+                  <span className="about__marker-label">Unidad activa</span>
+                  <span className="about__marker-name">Blue Sky Sales</span>
                 </div>
               </div>
               <div className="about__marker-line" />

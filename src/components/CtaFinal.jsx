@@ -7,23 +7,24 @@ export default function CtaFinal() {
       <div className="container">
         <div className="cta-final__inner">
           <div className="cta-final__card">
-            <span className="section-label section-label--center">07 — CONTACTO</span>
+            <span className="section-label section-label--center">08 — CONTACTO</span>
             <div className="section-divider section-divider--center" />
 
             <h2 className="cta-final__title">
-              COORDINEMOS UNA<br/>REUNIÓN PARA CONVERSAR<br/>SOBRE TU PROCESO COMERCIAL.
+              CONSTRUYAMOS EL PRÓXIMO<br/>SISTEMA COMERCIAL<br/>DE TU EMPRESA.
             </h2>
             <p className="cta-final__text">
-              Si tu empresa necesita ordenar la prospección, mejorar la búsqueda de oportunidades
-              o entender cómo Blue Sky Prospect puede acompañar su proceso comercial, coordinemos una conversación.
+              Si tu empresa necesita ordenar consultas, implementar tecnología comercial o mejorar
+              su proceso de ventas B2B, Blue Sky Group puede ayudarte desde sus unidades activas:
+              Forge y Sales.
             </p>
             <div className="cta-final__actions">
               <a href="https://api.whatsapp.com/send/?phone=5491171008349&text&type=phone_number&app_absent=0" className="cta-final__btn cta-final__btn--primary" target="_blank" rel="noopener noreferrer">
                 Coordinar reunión
                 <ArrowRightIcon size={18} />
               </a>
-              <a href="https://www.blueskyprospect.com.ar/login" className="cta-final__btn cta-final__btn--secondary" target="_blank" rel="noopener noreferrer">
-                Conocer Blue Sky Prospect
+              <a href="#blue-sky-sales" className="cta-final__btn cta-final__btn--secondary">
+                Conocer Blue Sky Sales
               </a>
             </div>
           </div>

@@ -13,25 +13,26 @@ export default function Hero() {
 
           <div className="hero__info-block">
             <p className="hero__lead">
-              Holding de soluciones comerciales para empresas.
+              Holding de soluciones comerciales y tecnológicas para empresas B2B.
             </p>
 
             <p className="hero__subtitle">
-              Desarrollamos servicios e infraestructura comercial para ayudar a empresas a crecer, ordenar procesos y conectar mejor con sus mercados.
+              Construimos unidades especializadas para generar oportunidades, ordenar procesos
+              comerciales e implementar tecnología útil para vender y operar mejor.
             </p>
           </div>
 
           <div className="hero__actions">
-            <a href="#blue-sky-prospect" className="hero__btn hero__btn--primary" id="hero-cta-primary">
-              Conocer servicios
+            <a href="#blue-sky-forge" className="hero__btn hero__btn--primary" id="hero-cta-primary">
+              Conocer Blue Sky Forge
               <ArrowRightIcon size={18} />
             </a>
-            <a href="#contacto" className="hero__btn hero__btn--secondary" id="hero-cta-secondary">
-              Coordinar reunión
+            <a href="#blue-sky-sales" className="hero__btn hero__btn--secondary" id="hero-cta-secondary">
+              Explorar Blue Sky Sales
             </a>
           </div>
 
-          <div className="hero__ecosystem" aria-label="Arquitectura del ecosistema Blue Sky Group">
+          <div className="hero__ecosystem" aria-label="Arquitectura del ecosistema Blue Sky Group" id="ecosistema">
             <span className="hero__eco-overline">El ecosistema</span>
             <div className="hero__eco-track">
               <div className="hero__eco-node">
@@ -42,8 +43,15 @@ export default function Hero() {
                 <EcosystemConnector />
               </span>
               <div className="hero__eco-node hero__eco-node--active">
-                <span className="hero__eco-tag hero__eco-tag--active">Servicio activo</span>
-                <span className="hero__eco-name">Blue Sky Prospect</span>
+                <span className="hero__eco-tag hero__eco-tag--active">Unidad activa</span>
+                <span className="hero__eco-name">Blue Sky Forge</span>
+              </div>
+              <span className="hero__eco-arrow" aria-hidden="true">
+                <EcosystemConnector />
+              </span>
+              <div className="hero__eco-node hero__eco-node--active">
+                <span className="hero__eco-tag hero__eco-tag--active">Unidad activa</span>
+                <span className="hero__eco-name">Blue Sky Sales</span>
               </div>
               <span className="hero__eco-arrow" aria-hidden="true">
                 <EcosystemConnector />

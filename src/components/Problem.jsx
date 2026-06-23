@@ -12,23 +12,23 @@ export default function Problem() {
     <section className="problem" id="problem">
       <div className="container">
         <div className="problem__inner">
-          <span className="section-label">03 — QUÉ RESUELVE BLUE SKY PROSPECT</span>
+          <span className="section-label">04 — QUÉ RESUELVE BLUE SKY SALES</span>
           <div className="section-divider" />
 
           <div className="problem__content-grid">
             <div className="problem__left">
               <h2 className="section-heading">
-                LA PROSPECCIÓN B2B<br/>
+                LA VENTA B2B<br/>
                 SIGUE SIENDO DEMASIADO<br/>
                 MANUAL Y DESORDENADA.
               </h2>
               <p className="section-body" style={{ marginTop: '32px' }}>
                 Muchas empresas B2B tienen oportunidades comerciales, pero sus
-                procesos de prospección siguen dependiendo de bases poco claras,
+                procesos de ventas siguen dependiendo de bases poco claras,
                 búsquedas manuales, mensajes genéricos y bajo seguimiento.
               </p>
               <p className="section-body" style={{ marginTop: '16px' }}>
-                Blue Sky Prospect nace para transformar ese proceso en un sistema
+                Blue Sky Sales nace para transformar ese proceso en un sistema
                 más claro, inteligente y accionable.
               </p>
             </div>

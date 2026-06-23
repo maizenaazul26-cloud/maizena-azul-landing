@@ -81,8 +81,11 @@ export default function Navbar() {
               Servicios
             </button>
             <div className="navbar__dropdown" id="navbar-services-menu">
-              <a href="#blue-sky-prospect" className="navbar__dropdown-link">
-                Blue Sky Prospect
+              <a href="#blue-sky-forge" className="navbar__dropdown-link">
+                Blue Sky Forge
+              </a>
+              <a href="#blue-sky-sales" className="navbar__dropdown-link">
+                Blue Sky Sales
               </a>
               <a href="#blue-sky-commerce" className="navbar__dropdown-link">
                 Blue Sky Commerce
@@ -146,13 +149,17 @@ export default function Navbar() {
               <span className="mobile-menu__label">Servicios</span>
             </span>
             <div className="mobile-menu__subitems">
-              <a href="#blue-sky-prospect" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-                <span className="mobile-menu__subname">Blue Sky Prospect</span>
-                <span className="mobile-menu__subtag mobile-menu__subtag--active">Servicio activo</span>
+              <a href="#blue-sky-forge" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+                <span className="mobile-menu__subname">Blue Sky Forge</span>
+                <span className="mobile-menu__subtag mobile-menu__subtag--active">Unidad activa</span>
+              </a>
+              <a href="#blue-sky-sales" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+                <span className="mobile-menu__subname">Blue Sky Sales</span>
+                <span className="mobile-menu__subtag mobile-menu__subtag--active">Unidad activa</span>
               </a>
               <a href="#blue-sky-commerce" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
                 <span className="mobile-menu__subname">Blue Sky Commerce</span>
-                <span className="mobile-menu__subtag">En desarrollo</span>
+                <span className="mobile-menu__subtag">Futuro</span>
               </a>
             </div>
           </div>

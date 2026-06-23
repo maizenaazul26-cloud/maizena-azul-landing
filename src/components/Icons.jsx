@@ -4,7 +4,7 @@ import { THEME } from '../constants/theme';
  * SVG icon components for Blue Sky Group landing
  */
 
-export function ProspectIcon({ size = 32 }) {
+export function SalesIcon({ size = 32 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="14" cy="14" r="9" stroke={THEME.primary} strokeWidth="2.5" />
@@ -86,7 +86,7 @@ export function BlueSkyLogo({ height = 32 }) {
   );
 }
 
-/* ── Benefit icons for Prospect section ────── */
+/* ── Benefit icons for Sales section ───────── */
 
 export function TargetIcon({ size = 24 }) {
   return (
@@ -146,6 +146,76 @@ export function FocusIcon({ size = 24 }) {
   );
 }
 
+/* ── Benefit icons for Forge section ───────── */
+
+export function CaptureIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" stroke={THEME.primary} strokeWidth="1.5" />
+      <path d="M3 8l9 6 9-6" stroke={THEME.primary} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function DatabaseIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="12" cy="6" rx="8" ry="3" stroke={THEME.primary} strokeWidth="1.5" />
+      <path d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6" stroke={THEME.primary} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" stroke={THEME.primary} strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function NotifyIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4a5 5 0 0 0-5 5v3.5L5 16h14l-2-3.5V9a5 5 0 0 0-5-5z" stroke={THEME.primary} strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M9.5 19a2.5 2.5 0 0 0 5 0" stroke={THEME.primary} strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="17" cy="6" r="2.5" fill={THEME.primary} opacity="0.2" stroke={THEME.primary} strokeWidth="1.2" />
+    </svg>
+  );
+}
+
+export function DashboardIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="3" width="18" height="18" rx="2.5" stroke={THEME.primary} strokeWidth="1.5" />
+      <path d="M8 17V11M12 17V7M16 17v-4" stroke={THEME.primary} strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function AutomateIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 4v3M12 17v3M4 12h3M17 12h3" stroke={THEME.primary} strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="12" cy="12" r="4.5" stroke={THEME.primary} strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="1.5" fill={THEME.primary} />
+    </svg>
+  );
+}
+
+export function IntegrateIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="12" r="3" stroke={THEME.primary} strokeWidth="1.5" />
+      <circle cx="18" cy="12" r="3" stroke={THEME.primary} strokeWidth="1.5" />
+      <path d="M9 12h6" stroke={THEME.primary} strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function ForgeIcon({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="6" width="24" height="20" rx="3" stroke={THEME.primary} strokeWidth="2.5" />
+      <path d="M4 12h24" stroke={THEME.primary} strokeWidth="2.5" />
+      <path d="M11 17l3 3 7-7" stroke={THEME.primary} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 const benefitIconMap = {
   target: TargetIcon,
   segment: SegmentIcon,
@@ -153,6 +223,12 @@ const benefitIconMap = {
   message: MessageIcon,
   organize: OrganizeIcon,
   focus: FocusIcon,
+  capture: CaptureIcon,
+  database: DatabaseIcon,
+  notify: NotifyIcon,
+  dashboard: DashboardIcon,
+  automate: AutomateIcon,
+  integrate: IntegrateIcon,
 };
 
 export function BenefitIcon({ type, size = 24 }) {

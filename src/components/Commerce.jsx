@@ -5,7 +5,7 @@ export default function Commerce() {
     <section className="commerce" id="blue-sky-commerce">
       <div className="container">
         <div className="commerce__inner">
-          <span className="section-label">06 — PRÓXIMA IMPLEMENTACIÓN</span>
+          <span className="section-label">07 — FUTURO</span>
           <div className="section-divider" />
 
           <div className="commerce__header">
@@ -16,11 +16,12 @@ export default function Commerce() {
 
           <div className="commerce__content-center">
             <div className="commerce__card commerce__card--central">
-              <div className="commerce__badge">En desarrollo</div>
-              <h3 className="commerce__title">La próxima capa comercial del ecosistema Blue Sky Group.</h3>
+              <div className="commerce__badge">Futuro · Próxima implementación</div>
+              <h3 className="commerce__title">La próxima construcción del ecosistema Blue Sky Group.</h3>
               <p className="commerce__desc">
-                Blue Sky Commerce será una futura infraestructura de comercio diseñada para conectar personas,
-                empresas, productos, servicios y oportunidades comerciales dentro de un entorno digital más amplio.
+                Blue Sky Commerce es una unidad futura orientada a explorar modelos de comercio digital,
+                conexión entre empresas, canales comerciales y nuevas formas de transacción dentro del
+                ecosistema Blue Sky Group.
               </p>
 
               <div className="commerce__map">
@@ -36,13 +37,13 @@ export default function Commerce() {
               </div>
 
               <p className="commerce__desc" style={{ marginTop: '24px' }}>
-                La visión es construir una plataforma capaz de facilitar relaciones comerciales entre distintos modelos
-                de intercambio: B2B, B2C, C2B, C2C y otros esquemas donde la oferta y la demanda puedan encontrarse de forma más ordenada.
+                La visión a futuro es explorar relaciones comerciales entre distintos modelos de intercambio
+                —B2B, B2C, C2B, C2C y otros esquemas— donde la oferta y la demanda puedan encontrarse de forma
+                más ordenada. Su desarrollo es una etapa posterior del ecosistema, no un servicio activo hoy.
               </p>
               <p className="commerce__desc">
-                Mientras Blue Sky Prospect se enfoca en encontrar, organizar y activar oportunidades comerciales, Blue Sky
-                Commerce buscará convertirse en la próxima capa del ecosistema: un espacio para conectar mercados,
-                operaciones y relaciones comerciales.
+                Mientras Blue Sky Forge y Blue Sky Sales son las unidades activas del holding, Blue Sky
+                Commerce representa la visión futura: la próxima construcción del ecosistema, todavía en desarrollo.
               </p>
             </div>
           </div>

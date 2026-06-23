@@ -3,7 +3,7 @@ import { BenefitIcon } from './Icons';
 import './AgentSystem.css';
 
 // TODO: revisar y reemplazar iconografía del sistema de agentes por íconos más
-// precisos y consistentes con prospección, CRM y agentes 24/7.
+// precisos y consistentes con ventas B2B, CRM y agentes 24/7.
 const cardIcons = ['target', 'organize', 'focus', 'message', 'qualify', 'segment'];
 
 export default function AgentSystem() {
@@ -11,21 +11,21 @@ export default function AgentSystem() {
     <section className="agent-system" id="agent-system">
       <div className="container">
         <div className="agent-system__inner">
-          <span className="section-label">04 — SISTEMA DE AGENTES DE BLUE SKY PROSPECT</span>
+          <span className="section-label">05 — SISTEMA DE AGENTES DE BLUE SKY SALES</span>
           <div className="section-divider" />
 
           <h2 className="section-heading">
             AGENTES COMERCIALES<br/>
-            PARA PROSPECCIÓN,<br/>
+            PARA INVESTIGACIÓN,<br/>
             CRM Y SEGUIMIENTO 24/7.
           </h2>
 
           <div className="agent-system__content">
             <p className="section-body">
-              Blue Sky Prospect incorpora agentes diseñados para asistir tareas comerciales clave: búsqueda de empresas, identificación de contactos, organización de oportunidades, calificación de prospectos, preparación de mensajes y seguimiento comercial.
+              Blue Sky Sales incorpora agentes diseñados para asistir tareas comerciales clave: búsqueda de empresas, identificación de contactos, organización de oportunidades, scoring de cuentas, preparación de mensajes y seguimiento comercial.
             </p>
             <p className="section-body" style={{ marginTop: '16px' }}>
-              La propuesta de valor está en combinar CRM, prospección y agentes en un sistema orientado a ordenar la actividad comercial B2B.
+              La propuesta de valor está en combinar CRM, investigación comercial y agentes en un sistema orientado a ordenar la actividad de ventas B2B, siempre con control humano sobre las decisiones finales.
             </p>
           </div>
 
