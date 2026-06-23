@@ -13,7 +13,7 @@ export default function Hero() {
 
           <div className="hero__info-block">
             <p className="hero__lead">
-              Holding de soluciones comerciales y tecnológicas para empresas B2B.
+              Holding de soluciones comerciales y tecnológicas para empresas.
             </p>
 
             <p className="hero__subtitle">
@@ -49,8 +49,8 @@ export default function Hero() {
               <span className="hero__eco-arrow" aria-hidden="true">
                 <EcosystemConnector />
               </span>
-              <div className="hero__eco-node hero__eco-node--active">
-                <span className="hero__eco-tag hero__eco-tag--active">Unidad activa</span>
+              <div className="hero__eco-node hero__eco-node--development">
+                <span className="hero__eco-tag hero__eco-tag--development">En desarrollo · Consultas disponibles</span>
                 <span className="hero__eco-name">Blue Sky Sales</span>
               </div>
               <span className="hero__eco-arrow" aria-hidden="true">

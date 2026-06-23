@@ -42,8 +42,8 @@ export default function Commerce() {
                 más ordenada. Su desarrollo es una etapa posterior del ecosistema, no un servicio activo hoy.
               </p>
               <p className="commerce__desc">
-                Mientras Blue Sky Forge y Blue Sky Sales son las unidades activas del holding, Blue Sky
-                Commerce representa la visión futura: la próxima construcción del ecosistema, todavía en desarrollo.
+                Mientras Blue Sky Forge es la unidad activa del holding y Blue Sky Sales se encuentra en desarrollo y disponible para consulta, Blue Sky
+                Commerce representa la visión futura: la próxima construcción del ecosistema.
               </p>
             </div>
           </div>

@@ -26,8 +26,8 @@ export default function AboutGroup() {
               </p>
               <p className="section-body" style={{ marginTop: '16px' }}>
                 Hoy el grupo concentra su actividad en <strong>Blue Sky Forge</strong>, unidad de
-                implementación tecnológica, y <strong>Blue Sky Sales</strong>, unidad comercial
-                enfocada en ventas B2B asistidas por IA y control humano. <strong>Blue Sky
+                implementación tecnológica, y <strong>Blue Sky Sales</strong>, unidad en desarrollo
+                orientada a consultas comerciales. <strong>Blue Sky
                 Commerce</strong> representa la próxima construcción del ecosistema.
               </p>
             </div>
@@ -42,9 +42,9 @@ export default function AboutGroup() {
               </div>
               <div className="about__marker-line" />
               <div className="about__marker">
-                <div className="about__marker-dot about__marker-dot--active" />
+                <div className="about__marker-dot about__marker-dot--development" />
                 <div className="about__marker-content">
-                  <span className="about__marker-label">Unidad activa</span>
+                  <span className="about__marker-label">En desarrollo · Consultas disponibles</span>
                   <span className="about__marker-name">Blue Sky Sales</span>
                 </div>
               </div>

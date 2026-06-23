@@ -22,7 +22,7 @@ export default function Sales() {
           <span className="section-label">03 — UNIDADES</span>
           <div className="section-divider" />
 
-          <span className="sales__badge">Unidad activa · Ventas B2B asistidas</span>
+          <span className="sales__badge">En desarrollo · Consultas disponibles</span>
 
           <h2 className="section-heading">
             BLUE SKY<br/>SALES.
@@ -30,12 +30,10 @@ export default function Sales() {
 
           <div className="sales__intro">
             <p className="sales__tagline">
-              Investigación comercial, scoring, mensajes y seguimiento para vender con más criterio.
+              Ventas B2B asistidas por IA, con criterio comercial y control humano.
             </p>
             <p className="section-body">
-              Blue Sky Sales ayuda a empresas B2B a ordenar su proceso comercial: identifica cuentas
-              objetivo, investiga oportunidades, prioriza contactos, prepara mensajes personalizados y
-              estructura el seguimiento con asistencia de IA y control humano.
+              Blue Sky Sales es una unidad en desarrollo orientada a ayudar a empresas a ordenar su proceso comercial: investigación de cuentas, priorización de oportunidades, mensajes personalizados y seguimiento con asistencia de IA y control humano. Actualmente puede utilizarse como instancia de consulta para evaluar oportunidades, procesos de venta y criterios de prospección.
             </p>
             <p className="section-body" style={{ marginTop: '16px' }}>
               La IA prepara, ordena y recomienda. El equipo comercial decide, ajusta y ejecuta.

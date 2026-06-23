@@ -139,9 +139,9 @@ h1, h2, h3, .section-heading, .massive-title {
 /* Giant heading — matches original's massive uppercase black titles */
 .section-heading {
   font-size: clamp(48px, 8vw, 96px);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 0.95;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--text-dark);
   margin-bottom: 40px;

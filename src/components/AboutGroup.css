@@ -62,6 +62,11 @@
   animation: pulse 2.5s ease-in-out infinite;
 }
 
+.about__marker-dot--development {
+  background: var(--text-muted);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
 .about__marker-dot--future {
   background: var(--border-light);
   border: 2px solid var(--text-muted);

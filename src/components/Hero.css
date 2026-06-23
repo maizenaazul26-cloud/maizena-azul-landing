@@ -5,9 +5,9 @@
 
 :root {
   --brand-title-font-size: clamp(72px, 11vw, 190px);
-  --brand-title-font-weight: 900;
+  --brand-title-font-weight: 800;
   --brand-title-line-height: 0.9;
-  --brand-title-letter-spacing: -0.05em;
+  --brand-title-letter-spacing: -0.03em;
 }
 
 html {
@@ -268,6 +268,11 @@ html {
   border-color: var(--white);
 }
 
+.hero__eco-node--development {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 .hero__eco-tag {
   font-size: 10px;
   font-weight: 700;
@@ -283,6 +288,17 @@ html {
 
 .hero__eco-tag--active::before {
   content: '●';
+  margin-right: 6px;
+  font-size: 8px;
+  vertical-align: 1px;
+}
+
+.hero__eco-tag--development {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero__eco-tag--development::before {
+  content: '○';
   margin-right: 6px;
   font-size: 8px;
   vertical-align: 1px;

@@ -155,7 +155,7 @@ export default function Navbar() {
               </a>
               <a href="#blue-sky-sales" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
                 <span className="mobile-menu__subname">Blue Sky Sales</span>
-                <span className="mobile-menu__subtag mobile-menu__subtag--active">Unidad activa</span>
+                <span className="mobile-menu__subtag mobile-menu__subtag--development">En desarrollo</span>
               </a>
               <a href="#blue-sky-commerce" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
                 <span className="mobile-menu__subname">Blue Sky Commerce</span>

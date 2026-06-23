@@ -14,17 +14,17 @@ export default function CtaFinal() {
               CONSTRUYAMOS EL PRÓXIMO<br/>SISTEMA COMERCIAL<br/>DE TU EMPRESA.
             </h2>
             <p className="cta-final__text">
-              Si tu empresa necesita ordenar consultas, implementar tecnología comercial o mejorar
-              su proceso de ventas B2B, Blue Sky Group puede ayudarte desde sus unidades activas:
-              Forge y Sales.
+              Si tu empresa necesita ordenar consultas, implementar tecnología comercial o revisar
+              su proceso de ventas, Blue Sky Group puede ayudarte desde Forge y desde instancias
+              de consulta con Blue Sky Sales.
             </p>
             <div className="cta-final__actions">
               <a href="https://api.whatsapp.com/send/?phone=5491171008349&text&type=phone_number&app_absent=0" className="cta-final__btn cta-final__btn--primary" target="_blank" rel="noopener noreferrer">
-                Coordinar reunión
+                Hablar sobre Forge
                 <ArrowRightIcon size={18} />
               </a>
               <a href="#blue-sky-sales" className="cta-final__btn cta-final__btn--secondary">
-                Conocer Blue Sky Sales
+                Consultar por Blue Sky Sales
               </a>
             </div>
           </div>
