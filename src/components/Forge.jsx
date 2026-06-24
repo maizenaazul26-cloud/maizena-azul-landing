@@ -16,7 +16,7 @@ function BenefitCard({ benefit }) {
   );
 }
 
-export default function Forge() {
+export default function Forge({ onExplore }) {
   return (
     <section className="forge" id="blue-sky-forge">
       <div className="container">
@@ -24,7 +24,7 @@ export default function Forge() {
 
           <div className="section-divider" />
 
-          <span className="forge__badge">Unidad activa · Implementación tecnológica</span>
+          <span className="forge__badge">Unidad tecnológica</span>
 
           <h2 className="section-heading">
             BLUE SKY<br/>FORGE.
@@ -80,10 +80,10 @@ export default function Forge() {
         </div>
 
         <div className="forge__cta-wrap">
-          <a href="#contacto" className="forge__cta" id="forge-cta">
+          <button type="button" className="forge__cta" id="forge-cta" onClick={onExplore}>
             Explorar Blue Sky Forge
             <ArrowRightIcon size={18} />
-          </a>
+          </button>
         </div>
       </div>
     </section>
