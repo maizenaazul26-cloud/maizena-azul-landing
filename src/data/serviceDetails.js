@@ -1,17 +1,19 @@
 /**
- * Contenido de las vistas internas por unidad del ecosistema (Forge hoy,
- * Prospect después). Cada entrada alimenta <ServiceDetailView />, que no
- * conoce nada específico de ninguna unidad. Para agregar una unidad nueva:
- * agregar una clave aquí (ej. serviceDetails.prospect) con el mismo shape
- * — no hay que tocar ServiceDetailView.jsx ni la lógica de navegación en
- * App.jsx.
+ * Contenido de las vistas internas por unidad del ecosistema (Forge,
+ * Prospect). Cada entrada alimenta <ServiceDetailView />, que no conoce
+ * nada específico de ninguna unidad. Para agregar una unidad nueva:
+ * agregar una clave aquí con el mismo shape — no hay que tocar
+ * ServiceDetailView.jsx ni la lógica de navegación en App.jsx.
  *
  * Estructura pensada como funnel, no como ficha informativa:
- * hero (qué es y qué promete) → overview (qué es, en detalle) →
- * problem (reconocimiento) → capabilities (qué construye, por categoría) →
- * audience (para quién) → process (cómo trabaja) →
- * scenarios (tangibilidad) → differentiators (por qué) →
- * finalCta (conversión).
+ * hero (qué es y qué promete) → overview/problem (orden configurable vía
+ * sectionOrder) → capabilities (qué incluye: opcionalmente un bloque
+ * `featured` de oferta de entrada + `categories` de capacidades
+ * complementarias) → audience (para quién) → process (cómo funciona el
+ * sistema) → scenarios/differentiators (orden configurable vía
+ * midSectionOrder) → workflow opcional (cómo se implementa con el
+ * cliente — distinto de process: habla de la relación comercial, no del
+ * motor operativo) → finalCta (conversión).
  */
 export const serviceDetails = {
   forge: {
@@ -128,6 +130,153 @@ export const serviceDetails = {
         external: true,
       },
       secondaryCta: { label: 'Evaluar una idea' },
+    },
+  },
+
+  prospect: {
+    id: 'prospect',
+    title: 'Blue Sky Prospect',
+    // Problema primero, luego "qué es" — a diferencia de Forge, acá interesa
+    // que el visitante se reconozca en el dolor antes de leer la definición.
+    sectionOrder: ['problem', 'overview'],
+    // Diferencial antes de casos de uso: refuerza "no es una lista" antes
+    // de mostrar escenarios, para que no se lean como ejemplos de leads sueltos.
+    midSectionOrder: ['differentiators', 'scenarios'],
+    hero: {
+      subtitle: 'Prospección B2B asistida por IA, con criterio comercial y control humano.',
+      text:
+        'Blue Sky Prospect ayuda a empresas B2B a encontrar mejores cuentas, priorizar oportunidades y preparar mensajes comerciales con más foco, contexto y trazabilidad.',
+      cta: { label: 'Solicitar diagnóstico' },
+      secondaryCta: { label: 'Ver cómo funciona', targetId: 'prospect-view-capabilities' },
+    },
+    problem: {
+      heading: 'La prospección no falla solo por falta de esfuerzo. Falla por falta de sistema.',
+      items: [
+        'No sé a qué empresas salir a buscar.',
+        'Tengo contactos, pero no sé cuáles valen la pena.',
+        'Mi equipo comercial pierde tiempo investigando.',
+        'Mandamos mensajes, pero son genéricos.',
+        'No tenemos seguimiento ordenado.',
+        'El CRM está vacío o desactualizado.',
+        'Dependemos demasiado de recomendaciones.',
+        'Nos cuesta sostener una cadencia comercial constante.',
+      ],
+    },
+    overview: {
+      heading: 'Qué es Blue Sky Prospect',
+      body:
+        'Blue Sky Prospect es un servicio de prospección B2B asistido por IA que ayuda a empresas a transformar mercados objetivo en oportunidades comerciales accionables. Investigamos empresas, detectamos contactos potenciales, priorizamos leads, preparamos mensajes y ordenamos próximos pasos para que el equipo comercial pueda ejecutar con más criterio.',
+      extra:
+        'No reemplaza al equipo comercial: lo potencia. El sistema trabaja el frío; el comercial trabaja el interés.',
+      highlight: 'La IA prepara. El criterio humano decide.',
+    },
+    capabilities: {
+      heading: 'Qué incluye',
+      featured: {
+        kicker: 'Oferta de entrada',
+        title: 'Sprint de Oportunidades B2B',
+        description: 'Una primera base priorizada de oportunidades para salir a prospectar con más criterio.',
+        examples: ['Empresas objetivo investigadas', 'Scoring y motivo de fit', 'Mensaje inicial y follow-ups sugeridos'],
+        result: 'Una base accionable, lista para que el equipo comercial empiece a ejecutar.',
+      },
+      categoriesHeading: 'Capacidades complementarias',
+      categories: [
+        {
+          title: 'Setup Prospect',
+          description: 'Armado inicial del sistema de prospección desde cero.',
+          examples: ['ICP documentado', 'Cuentas objetivo y contactos sugeridos', 'CRM simple en Sheet, Airtable o Notion'],
+          result: 'Un sistema comercial inicial para prospectar con continuidad.',
+        },
+        {
+          title: 'Prospect Assist Mensual',
+          description: 'Acompañamiento recurrente para sostener la prospección.',
+          examples: ['Nuevas cuentas y contactos cada mes', 'Actualización de seguimiento', 'Reporte mensual'],
+          result: 'La prospección deja de ser una acción aislada y se vuelve una operación continua.',
+        },
+        {
+          title: 'Auditoría de Prospección',
+          description: 'Diagnóstico del proceso comercial actual.',
+          examples: ['Revisión de ICP y base actual', 'Revisión de canales y mensajes', 'Plan de acción inicial'],
+          result: 'Claridad sobre qué está frenando la generación de oportunidades, antes de invertir.',
+        },
+        {
+          title: 'Mensajería Comercial B2B',
+          description: 'Mensajes y follow-ups para empresas que ya tienen base o contactos.',
+          examples: ['Mensaje inicial y variantes por segmento', 'Follow-ups y mensaje de reactivación', 'Guión breve de llamada'],
+          result: 'Mejora la calidad del primer contacto comercial.',
+        },
+      ],
+    },
+    audience: {
+      heading: 'Para quién está pensado',
+      items: [
+        'Founders B2B que todavía venden de forma manual.',
+        'Equipos comerciales chicos sin SDR dedicado.',
+        'Consultoras y agencias B2B.',
+        'Software companies chicas o medianas.',
+        'Empresas industriales con oferta B2B.',
+        'Servicios profesionales que buscan nuevos clientes.',
+        'Empresas con ticket medio o alto que dependen demasiado de referidos.',
+        'Pymes que necesitan ordenar su prospección.',
+      ],
+    },
+    process: {
+      heading: 'Cómo funciona el sistema',
+      subheading: 'El flujo operativo de prospección, de punta a punta.',
+      steps: [
+        { title: 'Entendemos tu oferta', description: 'Analizamos qué vendés, a quién, con qué ticket y en qué mercado.' },
+        { title: 'Definimos el foco comercial', description: 'Clarificamos ICP, segmentos y criterios de búsqueda.' },
+        { title: 'Investigamos empresas objetivo', description: 'Construimos una primera base de cuentas con sentido comercial.' },
+        { title: 'Priorizamos oportunidades', description: 'Asignamos score y motivo de fit para ordenar el trabajo comercial.' },
+        { title: 'Preparamos mensajes', description: 'Redactamos mensajes iniciales y follow-ups con contexto.' },
+        { title: 'Entregamos próximos pasos', description: 'Dejamos una base accionable en Sheet o CRM simple, con recomendaciones de ejecución.' },
+      ],
+    },
+    differentiators: {
+      heading: 'No vendemos bases genéricas. Construimos criterio comercial.',
+      lead: 'El objetivo no es contactar más por volumen. El objetivo es prospectar mejor.',
+      items: [
+        'No se limita a entregar contactos: investiga contexto antes de priorizar.',
+        'Combina IA con revisión humana en cada etapa.',
+        'Prioriza fit y calidad, no solo volumen.',
+        'Entrega una base accionable, no un informe abstracto.',
+        'Construye proceso y aprendizaje comercial, no solo contactos.',
+        'No es scraping masivo ni automatización sin control.',
+      ],
+    },
+    scenarios: {
+      heading: 'Casos de uso',
+      note: 'Escenarios de ejemplo, no casos reales confirmados.',
+      items: [
+        'Una empresa que arranca su primera prospección outbound y no sabe por dónde empezar.',
+        'Un equipo comercial chico sin SDR dedicado que necesita ordenar su pipeline.',
+        'Una consultora B2B que depende demasiado de referidos y quiere ampliar canales.',
+        'Una empresa con un CRM desactualizado que necesita reordenar su base.',
+        'Una empresa que ya tiene contactos pero no sabe cómo abordarlos con mensajes relevantes.',
+        'Una empresa que necesita un diagnóstico antes de invertir en prospección.',
+      ],
+    },
+    workflow: {
+      heading: 'Cómo se trabaja con el cliente',
+      subheading: 'El proceso comercial de implementación: onboarding y trabajo conjunto.',
+      steps: [
+        { title: 'Diagnóstico', description: 'Entendemos qué vende la empresa, a quién quiere llegar y qué oportunidad busca.' },
+        { title: 'Definición de segmento', description: 'Se definen industrias, empresas, cargos, ubicación, tamaño y criterios de fit.' },
+        { title: 'Configuración', description: 'Se acuerdan criterios, mensajes, canales y formato de entrega.' },
+        { title: 'Primera ejecución supervisada', description: 'Se valida calidad de prospectos, mensajes y priorización antes de escalar.' },
+        { title: 'Ajuste e iteración', description: 'Se mejora el sistema según resultados, aprendizaje comercial y feedback humano.' },
+      ],
+    },
+    finalCta: {
+      heading: 'Convertí tu prospección en un sistema comercial más claro.',
+      text:
+        'Blue Sky Prospect te ayuda a encontrar mejores oportunidades, priorizarlas y preparar el contacto con más contexto y menos improvisación.',
+      cta: {
+        label: 'Solicitar diagnóstico',
+        href: 'https://api.whatsapp.com/send/?phone=5491171008349&text&type=phone_number&app_absent=0',
+        external: true,
+      },
+      secondaryCta: { label: 'Coordinar una consulta' },
     },
   },
 };

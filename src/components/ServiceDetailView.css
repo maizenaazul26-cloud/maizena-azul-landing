@@ -26,7 +26,7 @@
 /* ── 1. Hero: marca + retorno + promesa + CTAs ─ */
 .service-view__hero {
   background: var(--primary);
-  padding: clamp(40px, 6vw, 64px) 0 clamp(56px, 8vw, 80px);
+  padding: clamp(48px, 7vw, 72px) 0 clamp(48px, 7vw, 72px);
 }
 
 .service-view__hero-top {
@@ -34,16 +34,16 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .service-view__title {
-  font-size: clamp(36px, 6vw, 72px);
+  font-size: clamp(44px, 7.5vw, 88px);
   font-weight: 800;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: var(--white);
-  line-height: 0.98;
+  line-height: 0.96;
 }
 
 .service-view__title:focus-visible {
@@ -52,28 +52,30 @@
   border-radius: var(--radius-sm);
 }
 
-/* Botón "volver", integrado al hero — sin barra blanca separada */
+/* Botón "volver": fino, chico, integrado al hero — no debe competir con
+   el título en jerarquía visual ni en peso de color. */
 .service-view__back {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 10px 18px;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 7px 14px;
   border-radius: var(--radius-xl);
   flex-shrink: 0;
   white-space: nowrap;
-  margin-top: 8px;
-  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  margin-top: 10px;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .service-view__back:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateX(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--white);
 }
 
 .service-view__back:focus-visible {
@@ -82,12 +84,12 @@
 }
 
 .service-view__subtitle {
-  font-size: clamp(19px, 2.4vw, 25px);
+  font-size: clamp(19px, 2.4vw, 26px);
   font-weight: 600;
   line-height: 1.4;
   color: var(--white);
-  max-width: 680px;
-  margin-bottom: 16px;
+  max-width: 700px;
+  margin-bottom: 14px;
 }
 
 .service-view__hero-text {
@@ -95,7 +97,7 @@
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.88);
   max-width: 640px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .service-view__hero-actions {
@@ -150,7 +152,16 @@
 
 /* ── Body: ritmo editorial, sin vacíos exagerados ── */
 .service-view__section {
-  padding: clamp(48px, 6vw, 64px) 0;
+  padding: clamp(40px, 5vw, 52px) 0;
+}
+
+/* Bloque alternativo (workflow) sobre fondo gris: diferencia visualmente
+   "cómo funciona el sistema" (blanco) de "cómo se trabaja con el cliente"
+   (gris), aunque comparten el mismo componente de steps. */
+.service-view__section--muted {
+  background: var(--bg-body);
+  border-radius: var(--radius-lg);
+  padding: clamp(40px, 5vw, 52px) clamp(24px, 4vw, 40px);
 }
 
 .service-view__section-heading {
@@ -159,8 +170,22 @@
   letter-spacing: -0.01em;
   text-transform: uppercase;
   color: var(--text-dark);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   max-width: 720px;
+}
+
+/* Cuando hay subheading, el heading queda con menos margen propio: el
+   aire lo aporta el subheading antes de los steps. */
+.service-view__section-heading:has(+ .service-view__section-subheading) {
+  margin-bottom: 8px;
+}
+
+.service-view__section-subheading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  max-width: 600px;
 }
 
 /* ── 2. Qué es Blue Sky Forge ────────────────── */
@@ -200,9 +225,11 @@
 }
 
 /* ── 3. Problema ────────────────────────────── */
+/* minmax 240px → 4 columnas en desktop (container ~1100px), 8 dolores
+   quedan en 2 filas parejas de 4, sin cards sueltas. */
 .service-view__problem-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 14px;
   list-style: none;
 }
@@ -219,7 +246,16 @@
   box-shadow: var(--shadow-card);
 }
 
-/* ── 4. Qué construimos: 2x2 fijo en desktop ─── */
+/* ── 4. Qué incluye: oferta destacada + capacidades complementarias ── */
+.service-view__categories-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
 .service-view__categories {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -227,11 +263,34 @@
 }
 
 .service-view__category {
+  position: relative;
   background: var(--white);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 28px;
   box-shadow: var(--shadow-card);
+}
+
+/* Oferta de entrada: card independiente, fuera de la grilla 2x2, para que
+   se lea como un nivel distinto (la oferta concreta) de las capacidades
+   complementarias que vienen debajo. */
+.service-view__category--featured {
+  margin-bottom: 28px;
+  border-color: rgba(6, 111, 238, 0.3);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.service-view__category-tag {
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-glow);
+  border-radius: 100px;
+  padding: 4px 12px;
+  margin-bottom: 12px;
 }
 
 .service-view__category-title {
@@ -274,10 +333,31 @@
   border-top: 1px solid var(--border-light);
 }
 
+/* La card destacada da más protagonismo a descripción y resultado: los
+   chips quedan más discretos (mismo tono que el borde, no el azul de marca)
+   para no competir visualmente con el mensaje principal de la oferta. */
+.service-view__category--featured .service-view__category-examples li {
+  color: var(--text-dark);
+  background: var(--bg-body);
+}
+
+.service-view__category--featured .service-view__category-title {
+  font-size: 20px;
+}
+
+.service-view__category--featured .service-view__category-desc {
+  font-size: 15px;
+}
+
+.service-view__category--featured .service-view__category-result {
+  font-size: 15px;
+}
+
 /* ── 5. Para quién ──────────────────────────── */
+/* minmax 250px → 4 columnas en desktop, 8 segmentos en 2 filas parejas. */
 .service-view__audience-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 12px;
   list-style: none;
 }
@@ -302,12 +382,20 @@
   color: var(--primary);
 }
 
-/* ── 6. Cómo trabajamos ─────────────────────── */
+/* ── 6. Cómo funciona / cómo se trabaja ─────── */
+/* auto-fit en vez de un número fijo de columnas: el mismo bloque se
+   reutiliza para procesos de distinta longitud (Forge: 5 pasos,
+   Prospect: 7 + 5 en workflow) sin dejar huérfanos en la última fila. */
 .service-view__steps {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   list-style: none;
+}
+
+/* 6 pasos → 3x2 explícito (en vez de 5+1 huérfano con auto-fit). */
+.service-view__steps--count-6 {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .service-view__step {
@@ -418,7 +506,9 @@
 
 /* ── 9. CTA final ───────────────────────────── */
 .service-view__final {
-  background: var(--primary);
+  background:
+    radial-gradient(ellipse 700px 380px at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%),
+    var(--primary);
   padding: clamp(56px, 7vw, 88px) 0;
 }
 
@@ -479,7 +569,8 @@
 
 /* ── Responsive: tablet (1024px) ────────────── */
 @media (max-width: 1024px) {
-  .service-view__steps {
+  .service-view__steps,
+  .service-view__steps--count-6 {
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -523,7 +614,8 @@
     grid-template-columns: 1fr;
   }
 
-  .service-view__steps {
+  .service-view__steps,
+  .service-view__steps--count-6 {
     grid-template-columns: 1fr;
     gap: 24px;
   }

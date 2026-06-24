@@ -36,6 +36,18 @@
   font-size: 8px;
 }
 
+/* Servicio activo: mismo tratamiento azul institucional que .forge__badge,
+   para que Prospect se perciba como unidad activa/prioritaria. */
+.prospect__badge--active {
+  color: var(--primary);
+  background: var(--primary-glow);
+  border-color: rgba(6, 111, 238, 0.25);
+}
+
+.prospect__badge--active::before {
+  content: '●';
+}
+
 .prospect__intro {
   max-width: 760px;
   margin-top: 8px;

@@ -14,14 +14,13 @@ function BenefitCard({ benefit }) {
   );
 }
 
-export default function Prospect() {
+export default function Prospect({ onExplore }) {
   return (
     <section className="prospect" id="blue-sky-prospect">
       <div className="container">
         <div className="prospect__header">
-          {/* Mobile: badge corto para no romper en 320px */}
-          <span className="prospect__badge prospect__badge--full" aria-label="En desarrollo · Consultas disponibles">
-            En desarrollo · Consultas disponibles
+          <span className="prospect__badge prospect__badge--active">
+            Servicio activo
           </span>
 
           <h2 className="section-heading">
@@ -33,7 +32,7 @@ export default function Prospect() {
               Ventas B2B asistidas por IA y control humano.
             </p>
             <p className="section-body">
-              Blue Sky Prospect es la unidad de ventas B2B del grupo, actualmente en desarrollo y disponible para consultas. Combina inteligencia artificial para identificar, calificar y preparar oportunidades comerciales, con el control y criterio del equipo humano para tomar las decisiones clave.
+              Blue Sky Prospect es el servicio activo de Blue Sky Group: combina inteligencia artificial para identificar, calificar y preparar oportunidades comerciales, con el control y criterio del equipo humano para tomar las decisiones clave.
             </p>
             <p className="section-body" style={{ marginTop: '16px' }}>
               La IA prepara, ordena y recomienda. El equipo humano decide, negocia y ejecuta.
@@ -48,10 +47,10 @@ export default function Prospect() {
         </div>
 
         <div className="prospect__cta-wrap">
-          <a href="#contacto" className="prospect__cta" id="prospect-cta">
-            Consultar por Blue Sky Prospect
+          <button type="button" className="prospect__cta" id="prospect-cta" onClick={onExplore}>
+            Explorar Blue Sky Prospect
             <ArrowRightIcon size={18} />
-          </a>
+          </button>
         </div>
       </div>
     </section>

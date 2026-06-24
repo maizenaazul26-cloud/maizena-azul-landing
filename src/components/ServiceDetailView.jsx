@@ -8,11 +8,109 @@ import './ServiceDetailView.css';
  * App.jsx decide cuándo montarla (activeView !== 'home') y le pasa
  * `detail` + `onBack`. No conoce contenido propio de ninguna unidad.
  *
- * Estructura tipo funnel: hero (qué es y qué promete) → overview (qué es,
- * en detalle) → problem (reconocimiento) → capabilities (qué construye) →
- * audience (para quién) → process (cómo trabaja) → scenarios
- * (tangibilidad) → differentiators (por qué) → finalCta (conversión).
+ * Estructura tipo funnel: hero (qué es y qué promete) → overview/problem
+ * (orden configurable vía detail.sectionOrder) → capabilities (qué
+ * construye) → audience (para quién) → process (cómo funciona) →
+ * scenarios/differentiators (orden configurable vía detail.midSectionOrder)
+ * → workflow opcional (cómo se trabaja con el cliente — solo si
+ * detail.workflow existe) → finalCta (conversión).
  */
+function OverviewSection({ overview }) {
+  return (
+    <section className="container service-view__section service-view__overview">
+      <h2 className="service-view__section-heading">{overview.heading}</h2>
+      <div className="service-view__overview-grid">
+        <div className="service-view__overview-copy">
+          <p>{overview.body}</p>
+          {overview.extra && <p>{overview.extra}</p>}
+        </div>
+        {overview.highlight && <p className="service-view__overview-highlight">{overview.highlight}</p>}
+      </div>
+    </section>
+  );
+}
+
+function ProblemSection({ problem }) {
+  return (
+    <section className="container service-view__section">
+      <h2 className="service-view__section-heading">{problem.heading}</h2>
+      <ul className="service-view__problem-grid">
+        {problem.items.map((item) => (
+          <li key={item} className="service-view__problem-item">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function ScenariosSection({ scenarios }) {
+  return (
+    <section className="container service-view__section">
+      <h2 className="service-view__section-heading">{scenarios.heading}</h2>
+      <p className="service-view__scenarios-note">{scenarios.note}</p>
+      <ul className="service-view__scenarios-grid">
+        {scenarios.items.map((item) => (
+          <li key={item} className="service-view__scenario">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function DifferentiatorsSection({ differentiators }) {
+  return (
+    <section className="container service-view__section">
+      <div className="service-view__diff-grid">
+        <div className="service-view__diff-lead">
+          <h2 className="service-view__section-heading">{differentiators.heading}</h2>
+          <p>{differentiators.lead}</p>
+        </div>
+        <ul className="service-view__differentiators">
+          {differentiators.items.map((item) => (
+            <li key={item} className="service-view__differentiator">
+              <CheckIcon size={16} />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Reusada para `process` ("cómo funciona el sistema": flujo operativo) y
+ * `workflow` ("cómo se trabaja con el cliente": onboarding comercial).
+ * `variant="muted"` les da un fondo distinto para que no se confundan
+ * visualmente siendo dos bloques de steps consecutivos en el documento.
+ */
+function ProcessSection({ process, headingId, variant }) {
+  return (
+    <section
+      className={`container service-view__section ${variant === 'muted' ? 'service-view__section--muted' : ''}`}
+      id={headingId}
+    >
+      <h2 className="service-view__section-heading">{process.heading}</h2>
+      {process.subheading && <p className="service-view__section-subheading">{process.subheading}</p>}
+      <ol className={`service-view__steps service-view__steps--count-${process.steps.length}`}>
+        {process.steps.map((step, index) => (
+          <li key={step.title} className="service-view__step">
+            <span className="service-view__step-number">{String(index + 1).padStart(2, '0')}</span>
+            <div className="service-view__step-body">
+              <h3 className="service-view__step-title">{step.title}</h3>
+              <p className="service-view__step-desc">{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 export default function ServiceDetailView({ detail, onBack }) {
   const headingRef = useRef(null);
 
@@ -69,33 +167,37 @@ export default function ServiceDetailView({ detail, onBack }) {
       </header>
 
       <div className="service-view__body">
-        {/* ── 2. Qué es Blue Sky Forge ── */}
-        <section className="container service-view__section service-view__overview">
-          <h2 className="service-view__section-heading">{detail.overview.heading}</h2>
-          <div className="service-view__overview-grid">
-            <div className="service-view__overview-copy">
-              <p>{detail.overview.body}</p>
-              <p>{detail.overview.extra}</p>
-            </div>
-            <p className="service-view__overview-highlight">{detail.overview.highlight}</p>
-          </div>
-        </section>
+        {/* ── 2-3. Qué es / Problema — orden configurable por unidad ── */}
+        {(detail.sectionOrder ?? ['overview', 'problem']).map((key) =>
+          key === 'overview' ? (
+            <OverviewSection key="overview" overview={detail.overview} />
+          ) : (
+            <ProblemSection key="problem" problem={detail.problem} />
+          )
+        )}
 
-        {/* ── 3. Problema ── */}
-        <section className="container service-view__section">
-          <h2 className="service-view__section-heading">{detail.problem.heading}</h2>
-          <ul className="service-view__problem-grid">
-            {detail.problem.items.map((item) => (
-              <li key={item} className="service-view__problem-item">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* ── 4. Qué construimos, por categoría (2x2 desktop) ── */}
+        {/* ── 4. Qué incluye: oferta de entrada destacada + capacidades complementarias ── */}
         <section className="container service-view__section" id={detail.hero.secondaryCta?.targetId}>
           <h2 className="service-view__section-heading">{detail.capabilities.heading}</h2>
+
+          {detail.capabilities.featured && (
+            <div className="service-view__category service-view__category--featured">
+              <span className="service-view__category-tag">{detail.capabilities.featured.kicker}</span>
+              <h3 className="service-view__category-title">{detail.capabilities.featured.title}</h3>
+              <p className="service-view__category-desc">{detail.capabilities.featured.description}</p>
+              <ul className="service-view__category-examples">
+                {detail.capabilities.featured.examples.map((example) => (
+                  <li key={example}>{example}</li>
+                ))}
+              </ul>
+              <p className="service-view__category-result">{detail.capabilities.featured.result}</p>
+            </div>
+          )}
+
+          {detail.capabilities.categoriesHeading && (
+            <h3 className="service-view__categories-heading">{detail.capabilities.categoriesHeading}</h3>
+          )}
+
           <div className="service-view__categories">
             {detail.capabilities.categories.map((category) => (
               <div key={category.title} className="service-view__category">
@@ -125,54 +227,22 @@ export default function ServiceDetailView({ detail, onBack }) {
           </ul>
         </section>
 
-        {/* ── 6. Cómo trabajamos ── */}
-        <section className="container service-view__section">
-          <h2 className="service-view__section-heading">{detail.process.heading}</h2>
-          <ol className="service-view__steps">
-            {detail.process.steps.map((step, index) => (
-              <li key={step.title} className="service-view__step">
-                <span className="service-view__step-number">{String(index + 1).padStart(2, '0')}</span>
-                <div className="service-view__step-body">
-                  <h3 className="service-view__step-title">{step.title}</h3>
-                  <p className="service-view__step-desc">{step.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
+        {/* ── 6. Cómo funciona el sistema ── */}
+        <ProcessSection process={detail.process} />
 
-        {/* ── 7. Casos de uso ── */}
-        <section className="container service-view__section">
-          <h2 className="service-view__section-heading">{detail.scenarios.heading}</h2>
-          <p className="service-view__scenarios-note">{detail.scenarios.note}</p>
-          <ul className="service-view__scenarios-grid">
-            {detail.scenarios.items.map((item) => (
-              <li key={item} className="service-view__scenario">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </section>
+        {/* ── 7-8. Casos de uso / Diferencial — orden configurable ── */}
+        {(detail.midSectionOrder ?? ['scenarios', 'differentiators']).map((key) =>
+          key === 'scenarios' ? (
+            <ScenariosSection key="scenarios" scenarios={detail.scenarios} />
+          ) : (
+            <DifferentiatorsSection key="differentiators" differentiators={detail.differentiators} />
+          )
+        )}
 
-        {/* ── 8. Diferencial (dos columnas) ── */}
-        <section className="container service-view__section">
-          <div className="service-view__diff-grid">
-            <div className="service-view__diff-lead">
-              <h2 className="service-view__section-heading">{detail.differentiators.heading}</h2>
-              <p>{detail.differentiators.lead}</p>
-            </div>
-            <ul className="service-view__differentiators">
-              {detail.differentiators.items.map((item) => (
-                <li key={item} className="service-view__differentiator">
-                  <CheckIcon size={16} />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        {/* ── 9. Cómo se trabaja con el cliente (opcional, solo si la unidad lo define) ── */}
+        {detail.workflow && <ProcessSection process={detail.workflow} variant="muted" />}
 
-        {/* ── 9. CTA final ── */}
+        {/* ── 10. CTA final ── */}
         <section className="service-view__final">
           <div className="container service-view__final-inner">
             <h2 className="service-view__final-heading">{detail.finalCta.heading}</h2>

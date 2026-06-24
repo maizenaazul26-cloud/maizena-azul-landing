@@ -13,8 +13,8 @@ import Footer from './components/Footer';
 import ServiceDetailView from './components/ServiceDetailView';
 import { serviceDetails } from './data/serviceDetails';
 
-// Vistas internas reconocidas por hash (#forge, #prospect el día que se sume).
-// 'home' no es un hash propio: cualquier hash que no matchee una unidad cae ahí.
+// Vistas internas reconocidas por hash (#forge, #prospect). 'home' no es un
+// hash propio: cualquier hash que no matchee una unidad cae ahí.
 const VIEW_HASHES = Object.keys(serviceDetails);
 
 function getViewFromHash() {
@@ -65,7 +65,7 @@ export default function App() {
         <AboutGroup />
         <EcosystemFlow />
         <Forge onExplore={() => openView('forge')} />
-        <Prospect />
+        <Prospect onExplore={() => openView('prospect')} />
         <Commerce />
         <CtaFinal />
       </main>
