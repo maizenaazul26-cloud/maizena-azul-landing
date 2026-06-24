@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════ */
 
 .cta-final {
-  padding: 160px 0;
+  padding: clamp(80px, 12vw, 160px) 0;
   background: var(--bg-body);
   position: relative;
   text-align: center;
@@ -17,7 +17,7 @@
 .cta-final__card {
   background: var(--primary);
   border-radius: var(--radius-xl);
-  padding: 80px 48px;
+  padding: clamp(40px, 7vw, 80px) clamp(24px, 5vw, 48px);
   max-width: 1000px;
   width: 100%;
   box-shadow: 0 24px 48px rgba(6, 111, 238, 0.15);
@@ -46,21 +46,23 @@
 }
 
 .cta-final__text {
-  font-size: 18px;
+  font-size: clamp(15px, 1.8vw, 18px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 48px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  overflow-wrap: break-word;
 }
 
 /* ── Actions ───────────────────────────────── */
 .cta-final__actions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .cta-final__btn {
@@ -99,15 +101,7 @@
 }
 
 /* ── Responsive ────────────────────────────── */
-@media (max-width: 768px) {
-  .cta-final {
-    padding: 88px 0;
-  }
-
-  .cta-final__card {
-    padding: 56px 28px;
-  }
-
+@media (max-width: 480px) {
   .cta-final__title br {
     display: none;
   }

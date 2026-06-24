@@ -1,4 +1,4 @@
-import { ArrowRightIcon, EcosystemConnector } from './Icons';
+import { EcosystemConnector } from './Icons';
 import './Hero.css';
 
 export default function Hero() {
@@ -17,18 +17,16 @@ export default function Hero() {
             </p>
 
             <p className="hero__subtitle">
-              Construimos unidades especializadas para generar oportunidades, ordenar procesos
-              comerciales e implementar tecnología útil para vender y operar mejor.
+              Diseñamos e implementamos infraestructura tecnológica y estratégica para que tu empresa deje de perder oportunidades, automatice procesos manuales y escale sus ventas de forma predecible.
             </p>
           </div>
 
           <div className="hero__actions">
             <a href="#blue-sky-forge" className="hero__btn hero__btn--primary" id="hero-cta-primary">
               Conocer Blue Sky Forge
-              <ArrowRightIcon size={18} />
             </a>
-            <a href="#blue-sky-sales" className="hero__btn hero__btn--secondary" id="hero-cta-secondary">
-              Explorar Blue Sky Sales
+            <a href="#blue-sky-prospect" className="hero__btn hero__btn--secondary" id="hero-cta-secondary">
+              Explorar Blue Sky Prospect
             </a>
           </div>
 
@@ -51,7 +49,7 @@ export default function Hero() {
               </span>
               <div className="hero__eco-node hero__eco-node--development">
                 <span className="hero__eco-tag hero__eco-tag--development">En desarrollo · Consultas disponibles</span>
-                <span className="hero__eco-name">Blue Sky Sales</span>
+                <span className="hero__eco-name">Blue Sky Prospect</span>
               </div>
               <span className="hero__eco-arrow" aria-hidden="true">
                 <EcosystemConnector />

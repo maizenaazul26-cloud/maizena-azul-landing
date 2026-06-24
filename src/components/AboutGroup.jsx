@@ -5,7 +5,7 @@ export default function AboutGroup() {
     <section className="about" id="que-es">
       <div className="container">
         <div className="about__inner">
-          <span className="section-label">01 — QUÉ ES BLUE SKY GROUP</span>
+
           <div className="section-divider" />
 
           <h2 className="section-heading">
@@ -19,15 +19,12 @@ export default function AboutGroup() {
           <div className="about__grid">
             <div className="about__content">
               <p className="section-body">
-                Blue Sky Group es un holding orientado a crear y operar soluciones comerciales,
-                tecnológicas y digitales para empresas. Desde sus unidades, transforma procesos
-                dispersos —prospección, seguimiento, captación de consultas, automatización e
-                implementación tecnológica— en sistemas más ordenados, medibles y accionables.
+                Blue Sky Group opera como un holding estratégico de soluciones para empresas. A través de unidades especializadas, transformamos la anarquía operativa —la dependencia exclusiva de la memoria humana, Excel, WhatsApp y tareas repetitivas— en sistemas de ventas estructurados, escalables y guiados por datos.
               </p>
               <p className="section-body" style={{ marginTop: '16px' }}>
                 Hoy el grupo concentra su actividad en <strong>Blue Sky Forge</strong>, unidad de
-                implementación tecnológica, y <strong>Blue Sky Sales</strong>, unidad en desarrollo
-                orientada a consultas comerciales. <strong>Blue Sky
+                implementación tecnológica activa, y <strong>Blue Sky Prospect</strong>, unidad en desarrollo
+                orientada a ventas B2B asistidas por IA. <strong>Blue Sky
                 Commerce</strong> representa la próxima construcción del ecosistema.
               </p>
             </div>
@@ -45,7 +42,7 @@ export default function AboutGroup() {
                 <div className="about__marker-dot about__marker-dot--development" />
                 <div className="about__marker-content">
                   <span className="about__marker-label">En desarrollo · Consultas disponibles</span>
-                  <span className="about__marker-name">Blue Sky Sales</span>
+                  <span className="about__marker-name">Blue Sky Prospect</span>
                 </div>
               </div>
               <div className="about__marker-line" />

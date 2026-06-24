@@ -1,4 +1,4 @@
-import { SALES_STEPS } from '../constants/theme';
+import { PROSPECT_STEPS as SALES_STEPS } from '../constants/theme';
 import './HowItWorks.css';
 
 export default function HowItWorks() {
@@ -6,10 +6,10 @@ export default function HowItWorks() {
     <section className="how" id="how-it-works">
       <div className="container">
         <div className="how__header">
-          <span className="section-label">06 — PROCESO DE BLUE SKY SALES</span>
+
           <div className="section-divider" />
           <h2 className="section-heading how__heading">
-            UN PROCESO AGÉNTICO<br/>PARA ORDENAR LAS<br/>VENTAS B2B.
+            LA METODOLOGÍA DE VENTAS:<br/>DE LA INVESTIGACIÓN<br/>AL CIERRE.
           </h2>
         </div>
 

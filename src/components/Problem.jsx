@@ -12,24 +12,21 @@ export default function Problem() {
     <section className="problem" id="problem">
       <div className="container">
         <div className="problem__inner">
-          <span className="section-label">04 — QUÉ RESUELVE BLUE SKY SALES</span>
+
           <div className="section-divider" />
 
           <div className="problem__content-grid">
             <div className="problem__left">
               <h2 className="section-heading">
-                LA VENTA B2B<br/>
-                SIGUE SIENDO DEMASIADO<br/>
-                MANUAL Y DESORDENADA.
+                EL MAYOR<br/>
+                CUELLO DE BOTELLA B2B<br/>
+                ES LA IMPROVISACIÓN.
               </h2>
               <p className="section-body" style={{ marginTop: '32px' }}>
-                Muchas empresas B2B tienen oportunidades comerciales, pero sus
-                procesos de ventas siguen dependiendo de bases poco claras,
-                búsquedas manuales, mensajes genéricos y bajo seguimiento.
+                La mayoría de las empresas pierden ventas no por falta de producto, sino por procesos rotos: leads que se enfrían, seguimientos que se olvidan y equipos comerciales agotados en tareas administrativas en lugar de estar vendiendo y negociando.
               </p>
               <p className="section-body" style={{ marginTop: '16px' }}>
-                Blue Sky Sales nace para transformar ese proceso en un sistema
-                más claro, inteligente y accionable.
+                Blue Sky Prospect nace para transformar ese proceso en un sistema de precisión, inteligente y accionable.
               </p>
             </div>
 

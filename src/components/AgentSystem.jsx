@@ -11,21 +11,21 @@ export default function AgentSystem() {
     <section className="agent-system" id="agent-system">
       <div className="container">
         <div className="agent-system__inner">
-          <span className="section-label">05 — SISTEMA DE AGENTES DE BLUE SKY SALES</span>
+
           <div className="section-divider" />
 
           <h2 className="section-heading">
-            AGENTES COMERCIALES<br/>
-            PARA INVESTIGACIÓN,<br/>
-            CRM Y SEGUIMIENTO 24/7.
+            INFRAESTRUCTURA AGÉNTICA:<br/>
+            ASISTENTES 24/7<br/>
+            PARA TU EQUIPO.
           </h2>
 
           <div className="agent-system__content">
             <p className="section-body">
-              Blue Sky Sales incorpora agentes diseñados para asistir tareas comerciales clave: búsqueda de empresas, identificación de contactos, organización de oportunidades, scoring de cuentas, preparación de mensajes y seguimiento comercial.
+              Nuestra visión con Blue Sky Prospect integra Agentes IA diseñados para ejecutar el trabajo pesado: filtrar bases de datos, enriquecer contactos y orquestar seguimientos, liberando a los humanos para hacer lo que la IA no puede: generar confianza y negociar.
             </p>
             <p className="section-body" style={{ marginTop: '16px' }}>
-              La propuesta de valor está en combinar CRM, investigación comercial y agentes en un sistema orientado a ordenar la actividad de ventas B2B, siempre con control humano sobre las decisiones finales.
+              La propuesta de valor está en combinar investigación comercial, automatización y agentes en un sistema orientado a ordenar la actividad de ventas B2B, siempre con control humano sobre las decisiones finales.
             </p>
           </div>
 

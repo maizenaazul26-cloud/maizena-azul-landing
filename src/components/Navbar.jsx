@@ -76,7 +76,7 @@ export default function Navbar() {
               aria-expanded={servicesOpen}
               aria-controls="navbar-services-menu"
               onFocus={() => setServicesOpen(true)}
-              onClick={() => setServicesOpen(true)}
+              onClick={() => setServicesOpen(!servicesOpen)}
             >
               Servicios
             </button>
@@ -84,8 +84,8 @@ export default function Navbar() {
               <a href="#blue-sky-forge" className="navbar__dropdown-link">
                 Blue Sky Forge
               </a>
-              <a href="#blue-sky-sales" className="navbar__dropdown-link">
-                Blue Sky Sales
+              <a href="#blue-sky-prospect" className="navbar__dropdown-link">
+                Blue Sky Prospect
               </a>
               <a href="#blue-sky-commerce" className="navbar__dropdown-link">
                 Blue Sky Commerce
@@ -100,14 +100,12 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <a href="#contacto" className="navbar__cta navbar__cta-desktop">
-          Coordinar reunión <span className="navbar__cta-arrow">→</span>
-        </a>
+
 
         <button
-          className="navbar__hamburger"
-          onClick={() => setMobileOpen(true)}
-          aria-label="Abrir menú"
+          className={`navbar__hamburger ${mobileOpen ? 'navbar__hamburger--open' : ''}`}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           id="navbar-toggle"
@@ -118,64 +116,45 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu overlay — composición header / cuerpo / footer */}
+      {/* Mobile menu overlay */}
       <div
         id="mobile-menu"
         className={`mobile-menu ${mobileOpen ? 'mobile-menu--open' : ''}`}
         aria-hidden={!mobileOpen}
       >
-        <div className="mobile-menu__header container">
-          <span className="mobile-menu__brand">BLUE SKY GROUP</span>
-          <button
-            className="mobile-menu__close"
-            onClick={closeMenu}
-            aria-label="Cerrar menú"
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+        <div className="container mobile-menu__container">
+          <nav className="mobile-menu__panel" aria-label="Navegación principal">
+            <a href="#que-es" className="mobile-menu__link" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+              <span className="mobile-menu__label">Qué es</span>
+            </a>
 
-        <nav className="mobile-menu__body container" aria-label="Navegación principal">
-          <a href="#que-es" className="mobile-menu__link" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-            <span className="mobile-menu__index">01</span>
-            <span className="mobile-menu__label">Qué es</span>
-          </a>
-
-          <div className="mobile-menu__group">
-            <span className="mobile-menu__link mobile-menu__link--group">
-              <span className="mobile-menu__index">02</span>
-              <span className="mobile-menu__label">Servicios</span>
-            </span>
-            <div className="mobile-menu__subitems">
-              <a href="#blue-sky-forge" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-                <span className="mobile-menu__subname">Blue Sky Forge</span>
-                <span className="mobile-menu__subtag mobile-menu__subtag--active">Unidad activa</span>
-              </a>
-              <a href="#blue-sky-sales" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-                <span className="mobile-menu__subname">Blue Sky Sales</span>
-                <span className="mobile-menu__subtag mobile-menu__subtag--development">En desarrollo</span>
-              </a>
-              <a href="#blue-sky-commerce" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-                <span className="mobile-menu__subname">Blue Sky Commerce</span>
-                <span className="mobile-menu__subtag">Futuro</span>
-              </a>
+            <div className="mobile-menu__group">
+              <span className="mobile-menu__link mobile-menu__link--group">
+                <span className="mobile-menu__label">Servicios</span>
+              </span>
+              <div className="mobile-menu__subitems">
+                <a href="#blue-sky-forge" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+                  <span className="mobile-menu__subname">Blue Sky Forge</span>
+                  <span className="mobile-menu__subtag mobile-menu__subtag--active">Unidad activa</span>
+                </a>
+                <a href="#blue-sky-prospect" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+                  <span className="mobile-menu__subname">Blue Sky Prospect</span>
+                  <span className="mobile-menu__subtag mobile-menu__subtag--development">En desarrollo</span>
+                </a>
+                <a href="#blue-sky-commerce" className="mobile-menu__sublink" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+                  <span className="mobile-menu__subname">Blue Sky Commerce</span>
+                  <span className="mobile-menu__subtag">Futuro</span>
+                </a>
+              </div>
             </div>
-          </div>
 
-          <a href="#contacto" className="mobile-menu__link" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-            <span className="mobile-menu__index">03</span>
-            <span className="mobile-menu__label">Contacto</span>
-          </a>
-        </nav>
-
-        <div className="mobile-menu__footer container">
-          <a href="#contacto" className="mobile-menu__cta" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
-            Coordinar reunión <span aria-hidden="true">→</span>
-          </a>
+            <a href="#contacto" className="mobile-menu__link" onClick={closeMenu} tabIndex={mobileOpen ? 0 : -1}>
+              <span className="mobile-menu__label">Contacto</span>
+            </a>
+          </nav>
         </div>
       </div>
+
     </nav>
   );
 }

@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════
+   ECOSYSTEM FLOW — Group → Forge → Sales → Commerce
+   ═══════════════════════════════════════════════ */
+
+.eco-flow {
+  padding: var(--section-padding);
+  background:
+    radial-gradient(ellipse 760px 420px at 50% 0%, rgba(6, 111, 238, 0.06), transparent 70%),
+    var(--bg-body);
+  position: relative;
+}
+
+.eco-flow__header {
+  margin-bottom: 64px;
+  max-width: 760px;
+}
+
+.eco-flow__header .section-body {
+  margin-top: 8px;
+}
+
+/* ── Track: 4 placas conectadas por flecha ─────────── */
+.eco-flow__track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  gap: 0;
+}
+
+.eco-flow__step {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.eco-flow__step:last-child {
+  grid-template-columns: 1fr;
+}
+
+.eco-flow__step-card {
+  position: relative;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(calc(var(--glass-blur) * 0.45)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.45)) saturate(var(--glass-saturation));
+  border: var(--glass-border-soft);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  margin-right: 16px;
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.eco-flow__step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-highlight);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.eco-flow__step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: var(--glass-shadow-strong);
+}
+
+/* Commerce: tratamiento "blueprint" — futuro, no activo */
+.eco-flow__step--future .eco-flow__step-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1.5px dashed rgba(6, 111, 238, 0.35);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 8px 20px rgba(6, 111, 238, 0.06);
+}
+
+.eco-flow__step-order {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.eco-flow__step-tag {
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-body);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+
+.eco-flow__step--future .eco-flow__step-tag {
+  color: var(--primary-dark);
+  background: transparent;
+  border-color: rgba(6, 111, 238, 0.3);
+}
+
+.eco-flow__step-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.eco-flow__step-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+.eco-flow__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(6, 111, 238, 0.45);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 1024px) {
+  .eco-flow__track {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .eco-flow__step,
+  .eco-flow__step:last-child {
+    grid-template-columns: 1fr;
+  }
+
+  .eco-flow__step-card {
+    margin-right: 0;
+  }
+
+  .eco-flow__connector {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .eco-flow__step-card {
+    padding: 24px 20px;
+  }
+}

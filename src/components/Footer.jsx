@@ -7,7 +7,6 @@ export default function Footer() {
         <div className="footer__divider" />
         <div className="footer__inner">
           <div className="footer__brand">
-            <span className="footer__logo-mark">B</span>
             <span className="footer__logo-text">Blue Sky Group</span>
           </div>
 

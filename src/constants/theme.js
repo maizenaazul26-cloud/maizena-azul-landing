@@ -12,7 +12,7 @@ export const THEME = {
   bgCard: 'rgba(255, 255, 255, 0.7)',
 };
 
-export const SALES_BENEFITS = [
+export const PROSPECT_BENEFITS = [
   {
     id: 'identify',
     title: 'Identificación de cuentas objetivo',
@@ -51,7 +51,7 @@ export const SALES_BENEFITS = [
   },
 ];
 
-export const SALES_STEPS = [
+export const PROSPECT_STEPS = [
   {
     number: '01',
     title: 'Identificamos cuentas objetivo',

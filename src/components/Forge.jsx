@@ -1,6 +1,8 @@
 import { FORGE_BENEFITS, FORGE_STEPS } from '../constants/theme';
 import { BenefitIcon, ArrowRightIcon } from './Icons';
+import './Prospect.css';
 import './Forge.css';
+
 
 function BenefitCard({ benefit }) {
   return (
@@ -19,7 +21,7 @@ export default function Forge() {
     <section className="forge" id="blue-sky-forge">
       <div className="container">
         <div className="forge__header">
-          <span className="section-label">02 — UNIDADES</span>
+
           <div className="section-divider" />
 
           <span className="forge__badge">Unidad activa · Implementación tecnológica</span>
@@ -30,18 +32,13 @@ export default function Forge() {
 
           <div className="forge__intro">
             <p className="forge__tagline">
-              Tecnología práctica para ordenar la operación comercial.
+              Sistemas comerciales simples para empresas reales.
             </p>
             <p className="section-body">
-              Blue Sky Forge es la unidad de implementación tecnológica de Blue Sky Group. Ayuda a
-              empresas que hoy trabajan con WhatsApp, email, Excel, formularios sueltos y memoria
-              humana a convertir ese desorden en sistemas simples: captura de consultas, bases
-              ordenadas, tableros, automatizaciones e integraciones livianas.
+              Blue Sky Forge es nuestra unidad de implementación tecnológica. Reemplazamos la improvisación en ventas por procesos blindados. Si tu equipo comercial depende de anotadores, Excel y WhatsApp, implementamos el ecosistema mínimo viable para capturar, gestionar y cerrar oportunidades sin fricción.
             </p>
             <p className="section-body" style={{ marginTop: '16px' }}>
-              No es una agencia web ni una software factory. Es una unidad enfocada en
-              implementaciones acotadas, rápidas y útiles para que una empresa deje de depender
-              de procesos manuales dispersos como sistema comercial.
+              No somos una agencia web ni una software factory clásica. Somos una unidad enfocada en implementaciones acotadas, rápidas y útiles para que una empresa deje de perder ventas por desorden administrativo.
             </p>
           </div>
         </div>
