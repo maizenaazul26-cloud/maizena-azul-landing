@@ -1,213 +1,217 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef } from 'react';
+import { BRAND_MOTION_EASING, BRAND_MOTION_TIMING } from '../constants/motion';
 import './BrandMotion.css';
 
-const EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
-const FONT_READY_TIMEOUT = 800;
-const INTRO_DURATION = 1100;
-const PULSE_DURATION = 500;
-const FLIP_DURATION = 800;
+function rectSnapshot(rect) {
+  return {
+    x: rect.x,
+    y: rect.y,
+    width: rect.width,
+    height: rect.height,
+  };
+}
 
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function transformFor(x, y, scale) {
+  return `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+}
 
-const waitForFonts = () => {
-  if (typeof document === 'undefined' || !document.fonts?.ready) {
-    return Promise.resolve();
-  }
+export default function BrandMotion({ onComplete }) {
+  const overlayRef = useRef(null);
+  const backdropRef = useRef(null);
+  const titleRef = useRef(null);
 
-  return Promise.race([
-    document.fonts.ready,
-    new Promise((resolve) => {
-      window.setTimeout(resolve, FONT_READY_TIMEOUT);
-    }),
-  ]);
-};
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+    const overlay = overlayRef.current;
+    const backdrop = backdropRef.current;
+    const title = titleRef.current;
+    const target = document.querySelector('.hero__brand-title');
+    const startedAt = performance.now();
+    const timers = new Set();
+    let active = true;
+    let completed = false;
 
-export default function BrandMotion() {
-  const [phase, setPhase] = useState(() => (
-    prefersReducedMotion() ? 'removed' : 'intro'
-  ));
-  const textRef = useRef(null);
-  const timersRef = useRef([]);
-  const previousOverflowRef = useRef('');
-  const previousHtmlOverflowRef = useRef('');
-  const finishedRef = useRef(false);
-
-  const clearTimers = useCallback(() => {
-    timersRef.current.forEach((timer) => window.clearTimeout(timer));
-    timersRef.current = [];
-  }, []);
-
-  const unlockScroll = useCallback(() => {
-    document.body.style.overflow = previousOverflowRef.current;
-    document.documentElement.style.overflow = previousHtmlOverflowRef.current;
-  }, []);
-
-  const finish = useCallback(() => {
-    if (finishedRef.current) return;
-    finishedRef.current = true;
-    clearTimers();
-
-    const heroTitle = document.querySelector('.hero__title');
-    if (heroTitle) {
-      heroTitle.style.transition = 'none';
-    }
-
-    document.documentElement.classList.remove('is-brand-animating');
-    unlockScroll();
-    setPhase('removed');
-
-    if (heroTitle) {
-      void heroTitle.offsetHeight;
-      window.requestAnimationFrame(() => {
-        heroTitle.style.transition = '';
-      });
-    }
-  }, [clearTimers, unlockScroll]);
-
-  const measureGlyphs = useCallback((el) => {
-    const lineRects = [...el.querySelectorAll('.brand-motion__line')]
-      .map((line) => line.getBoundingClientRect());
-
-    if (!lineRects.length) return el.getBoundingClientRect();
-
-    const left = Math.min(...lineRects.map((rect) => rect.left));
-    const top = Math.min(...lineRects.map((rect) => rect.top));
-    const right = Math.max(...lineRects.map((rect) => rect.right));
-    const bottom = Math.max(...lineRects.map((rect) => rect.bottom));
-
-    return {
-      left,
-      top,
-      width: right - left,
-      height: bottom - top,
+    const previousStyles = {
+      rootOverflow: root.style.overflow,
+      bodyOverflow: body.style.overflow,
+      bodyPaddingRight: body.style.paddingRight,
     };
-  }, []);
 
-  const getHeroRect = useCallback(() => {
-    const heroTitle = document.querySelector('.hero__title');
-    return heroTitle?.getBoundingClientRect() ?? null;
-  }, []);
+    const restorePage = () => {
+      root.style.overflow = previousStyles.rootOverflow;
+      body.style.overflow = previousStyles.bodyOverflow;
+      body.style.paddingRight = previousStyles.bodyPaddingRight;
+    };
 
-  const prepareIntro = useCallback(() => {
-    const el = textRef.current;
-    const heroRect = getHeroRect();
-    if (!el || !heroRect) return false;
+    const schedule = (callback, delay) => {
+      const timer = window.setTimeout(() => {
+        timers.delete(timer);
+        callback();
+      }, delay);
+      timers.add(timer);
+      return timer;
+    };
 
-    el.style.left = `${heroRect.left}px`;
-    el.style.top = `${heroRect.top}px`;
-    el.style.width = `${heroRect.width}px`;
-    el.style.transition = 'none';
-    el.style.transformOrigin = 'left top';
-    el.style.transform = 'none';
-    el.style.opacity = '0';
+    const clearTimers = () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      timers.clear();
+    };
 
-    void el.offsetHeight;
+    const complete = (reason = 'transitionend') => {
+      if (!active || completed) return;
+      completed = true;
+      clearTimers();
 
-    const glyphRect = measureGlyphs(el);
-    const targetCoverage = window.innerWidth <= 768 ? 0.88 : 0.76;
-    const maxScale = window.innerWidth <= 768 ? 1.08 : 1.55;
-    const introScale = Math.min(
-      maxScale,
-      Math.max(1, (window.innerWidth * targetCoverage) / glyphRect.width)
-    );
-    const introLeft = (window.innerWidth - glyphRect.width * introScale) / 2;
-    const introTop = (window.innerHeight - glyphRect.height * introScale) / 2;
-    const dx = introLeft - heroRect.left;
-    const dy = introTop - heroRect.top;
-    const introTransform = `translate(${dx}px, ${dy}px) scale(${introScale})`;
-
-    el.dataset.introTransform = introTransform;
-    el.style.transform = `translate(${dx}px, ${dy}px) scale(${introScale * 0.96})`;
-
-    window.requestAnimationFrame(() => {
-      if (finishedRef.current || !textRef.current) return;
-      textRef.current.style.transition = [
-        `transform ${PULSE_DURATION}ms ${EASING}`,
-        `opacity ${PULSE_DURATION}ms ${EASING}`,
-      ].join(', ');
-      textRef.current.style.transform = introTransform;
-      textRef.current.style.opacity = '1';
-    });
-
-    return true;
-  }, [getHeroRect, measureGlyphs]);
-
-  const startFlip = useCallback(() => {
-    const el = textRef.current;
-    const heroRect = getHeroRect();
-    if (!el || !heroRect) {
-      finish();
-      return;
-    }
-
-    el.style.left = `${heroRect.left}px`;
-    el.style.top = `${heroRect.top}px`;
-    el.style.width = `${heroRect.width}px`;
-    el.style.transition = `transform ${FLIP_DURATION}ms ${EASING}`;
-    el.style.transform = 'none';
-    setPhase('toHero');
-
-    const onTransitionEnd = (event) => {
-      if (event.target === el && event.propertyName === 'transform') {
-        el.removeEventListener('transitionend', onTransitionEnd);
-        finish();
+      const animatedRect = title?.getBoundingClientRect();
+      const targetRect = target?.getBoundingClientRect();
+      if (animatedRect && targetRect) {
+        const landing = {
+          reason,
+          animated: rectSnapshot(animatedRect),
+          target: rectSnapshot(targetRect),
+          delta: {
+            x: animatedRect.x - targetRect.x,
+            y: animatedRect.y - targetRect.y,
+            width: animatedRect.width - targetRect.width,
+            height: animatedRect.height - targetRect.height,
+          },
+        };
+        window.__bsgBrandMotionLanding = landing;
+        root.dataset.brandMotionLanding = JSON.stringify(landing);
       }
+
+      if (title) title.style.visibility = 'hidden';
+      root.classList.remove('is-brand-animating');
+      root.classList.add('is-intro-complete');
+      onComplete();
+      window.requestAnimationFrame(restorePage);
     };
 
-    el.addEventListener('transitionend', onTransitionEnd);
-    timersRef.current.push(window.setTimeout(() => {
-      el.removeEventListener('transitionend', onTransitionEnd);
-      finish();
-    }, FLIP_DURATION + 80));
-  }, [finish, getHeroRect]);
-
-  useEffect(() => {
-    if (prefersReducedMotion()) {
-      document.documentElement.classList.add('is-intro-complete');
-      return undefined;
-    }
-
-    let cancelled = false;
-    finishedRef.current = false;
-    previousOverflowRef.current = document.body.style.overflow;
-    previousHtmlOverflowRef.current = document.documentElement.style.overflow;
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.classList.add('is-brand-animating');
-
-    const handleResize = () => {
-      finish();
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    waitForFonts().then(() => {
-      if (cancelled || finishedRef.current) return;
-      if (!prepareIntro()) {
-        finish();
+    const snapAndComplete = (reason) => {
+      if (!title || !target) {
+        complete(reason);
         return;
       }
-      timersRef.current.push(window.setTimeout(startFlip, INTRO_DURATION));
-    });
+      const targetRect = target.getBoundingClientRect();
+      title.style.transition = 'none';
+      title.style.left = `${targetRect.left}px`;
+      title.style.top = `${targetRect.top}px`;
+      title.style.width = `${targetRect.width}px`;
+      title.style.transform = 'translate3d(0, 0, 0) scale(1)';
+      title.style.opacity = '1';
+      complete(reason);
+    };
+
+    const onResize = () => snapAndComplete('resize');
+    const onTransitionEnd = (event) => {
+      if (
+        overlay?.dataset.phase === 'flip' &&
+        event.target === title &&
+        event.propertyName === 'transform'
+      ) {
+        complete('transitionend');
+      }
+    };
+    const onKeyDown = (event) => {
+      if (event.key === 'Tab') snapAndComplete('keyboard');
+    };
+
+    root.classList.remove('is-intro-complete');
+    root.classList.add('is-brand-animating');
+    delete root.dataset.brandMotionLanding;
+
+    const scrollbarWidth = Math.max(0, window.innerWidth - root.clientWidth);
+    const bodyPadding = Number.parseFloat(getComputedStyle(body).paddingRight) || 0;
+    root.style.overflow = 'hidden';
+    body.style.overflow = 'hidden';
+    if (scrollbarWidth) body.style.paddingRight = `${bodyPadding + scrollbarWidth}px`;
+
+    window.addEventListener('resize', onResize);
+    window.addEventListener('keydown', onKeyDown, true);
+    title?.addEventListener('transitionend', onTransitionEnd);
+
+    const prepare = async () => {
+      if (!title || !target || !overlay || !backdrop) {
+        snapAndComplete('missing-target');
+        return;
+      }
+
+      const fontFallback = new Promise((resolve) => {
+        schedule(resolve, BRAND_MOTION_TIMING.fontReadyTimeout);
+      });
+      const fontsReady = document.fonts?.ready?.catch(() => undefined) ?? Promise.resolve();
+      await Promise.race([fontsReady, fontFallback]);
+      if (!active || completed) return;
+
+      const targetRect = target.getBoundingClientRect();
+      title.style.left = `${targetRect.left}px`;
+      title.style.top = `${targetRect.top}px`;
+      title.style.width = `${targetRect.width}px`;
+
+      const desiredWidth = Math.min(
+        window.innerWidth * (window.innerWidth <= 768 ? 0.78 : 0.76),
+        1200,
+      );
+      const minimumScale = window.innerWidth <= 768 ? 0.86 : 1;
+      const introScale = Math.min(1.5, Math.max(minimumScale, desiredWidth / targetRect.width));
+      const sourceLeft = (window.innerWidth - targetRect.width * introScale) / 2;
+      const sourceTop = (window.innerHeight - targetRect.height * introScale) / 2;
+      const sourceX = sourceLeft - targetRect.left;
+      const sourceY = sourceTop - targetRect.top;
+      const pulseScale = introScale * 0.94;
+      const pulseX = sourceX + (targetRect.width * (introScale - pulseScale)) / 2;
+      const pulseY = sourceY + (targetRect.height * (introScale - pulseScale)) / 2;
+
+      overlay.dataset.phase = 'intro';
+      title.style.transition = 'none';
+      title.style.opacity = '0';
+      title.style.transform = transformFor(pulseX, pulseY, pulseScale);
+      title.getBoundingClientRect();
+
+      window.requestAnimationFrame(() => {
+        if (!active || completed) return;
+        title.style.transition = [
+          `transform ${BRAND_MOTION_TIMING.pulseDuration}ms ${BRAND_MOTION_EASING}`,
+          `opacity ${BRAND_MOTION_TIMING.pulseDuration}ms ${BRAND_MOTION_EASING}`,
+        ].join(', ');
+        title.style.opacity = '1';
+        title.style.transform = transformFor(sourceX, sourceY, introScale);
+      });
+
+      const elapsed = performance.now() - startedAt;
+      schedule(() => {
+        if (!active || completed) return;
+        overlay.dataset.phase = 'flip';
+        backdrop.classList.add('brand-motion__backdrop--revealing');
+        title.style.transition = `transform ${BRAND_MOTION_TIMING.flipDuration}ms ${BRAND_MOTION_EASING}`;
+        title.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        schedule(
+          () => complete('timeout'),
+          BRAND_MOTION_TIMING.flipDuration + BRAND_MOTION_TIMING.safetyBuffer,
+        );
+      }, Math.max(0, BRAND_MOTION_TIMING.flipDelay - elapsed));
+    };
+
+    prepare().catch(() => snapAndComplete('error'));
 
     return () => {
-      cancelled = true;
-      window.removeEventListener('resize', handleResize);
+      active = false;
       clearTimers();
-      document.documentElement.classList.remove('is-brand-animating');
-      unlockScroll();
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('keydown', onKeyDown, true);
+      title?.removeEventListener('transitionend', onTransitionEnd);
+      root.classList.remove('is-brand-animating');
+      if (!completed) restorePage();
     };
-  }, [clearTimers, finish, prepareIntro, startFlip, unlockScroll]);
-
-  if (phase === 'removed') return null;
+  }, [onComplete]);
 
   return (
-    <div className={`brand-motion brand-motion--${phase}`} aria-hidden="true">
-      <div className="brand-motion__text" ref={textRef}>
-        <span className="brand-motion__line">Blue Sky</span>
-        <span className="brand-motion__line">Group</span>
+    <div className="brand-motion" data-phase="loading" ref={overlayRef} aria-hidden="true">
+      <div className="brand-motion__backdrop" ref={backdropRef} />
+      <div className="brand-motion__title" ref={titleRef}>
+        <span className="brand-motion__line">We Build What</span>
+        <span className="brand-motion__line">Moves Business</span>
       </div>
     </div>
   );

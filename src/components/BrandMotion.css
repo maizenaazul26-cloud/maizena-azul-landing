@@ -1,45 +1,49 @@
 .brand-motion {
   position: fixed;
   inset: 0;
-  z-index: 10000;
-  pointer-events: none;
+  z-index: 200;
+  overflow: hidden;
+  pointer-events: all;
 }
 
-.brand-motion__text {
+.brand-motion__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-brand-primary);
+  opacity: 1;
+  transition: opacity var(--motion-slow) var(--motion-enter);
+}
+
+.brand-motion__backdrop--revealing {
+  opacity: 0;
+}
+
+.brand-motion__title {
   position: fixed;
+  z-index: 1;
   display: flex;
+  width: max-content;
   flex-direction: column;
-  margin: 0;
   color: var(--white);
   font-family: var(--font-family);
-  font-size: var(--brand-title-font-size);
-  font-weight: var(--brand-title-font-weight);
-  line-height: var(--brand-title-line-height);
-  letter-spacing: var(--brand-title-letter-spacing);
-  text-transform: uppercase;
+  font-size: var(--hero-title-size);
+  font-weight: var(--hero-title-weight);
+  line-height: var(--hero-title-line-height);
+  letter-spacing: var(--hero-title-letter-spacing);
   text-align: left;
-  opacity: 0;
+  text-transform: uppercase;
   transform-origin: left top;
   will-change: transform, opacity;
-  text-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
 }
 
+.brand-motion__title span,
 .brand-motion__line {
   display: block;
-}
-
-.brand-motion--toHero .brand-motion__text {
-  text-shadow: none;
-}
-
-@media (max-width: 768px) {
-  .brand-motion__text {
-    text-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
-  }
+  white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-motion__text {
-    transition: none !important;
+  .brand-motion {
+    display: none;
   }
 }
