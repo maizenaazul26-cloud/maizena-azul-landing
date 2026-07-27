@@ -1,55 +1,249 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-AR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO -->
-    <title>Blue Sky Group | Holding de soluciones comerciales y tecnológicas</title>
-    <meta name="description" content="Blue Sky Group es un holding de soluciones comerciales y tecnológicas para empresas. Sus unidades ayudan a implementar tecnología comercial y evaluar procesos de venta." />
-    <meta name="keywords" content="Blue Sky Group, Blue Sky Forge, Blue Sky Prospect, ventas B2B, implementación tecnológica, CRM, comercio B2B" />
+    <title>Blue Sky Group | Tecnología, desarrollo comercial y nuevas oportunidades</title>
+    <meta
+      name="description"
+      content="Blue Sky Group articula Blue Sky Forge, Blue Sky Prospect y Blue Sky Commerce bajo una visión compartida."
+    />
     <meta name="author" content="Blue Sky Group" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#066fee" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Blue Sky Group | Holding de soluciones comerciales y tecnológicas" />
-    <meta property="og:description" content="Unidades especializadas para ordenar procesos, implementar tecnología útil y vender con más criterio: Blue Sky Forge y Blue Sky Prospect." />
-    <meta property="og:image" content="/og-image.png" />
+    <link rel="canonical" href="https://www.blueskygroup.com.ar/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
-    <link rel="apple-touch-icon" href="/favicon.png?v=2" />
-    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Blue Sky Group" />
+    <meta property="og:title" content="Blue Sky Group | Tres unidades, una misma dirección" />
+    <meta
+      property="og:description"
+      content="Tecnología, desarrollo comercial y nuevas oportunidades bajo una visión compartida."
+    />
+    <meta property="og:url" content="https://www.blueskygroup.com.ar/" />
+    <meta property="og:image" content="https://www.blueskygroup.com.ar/favicon.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Blue Sky Group | Tres unidades, una misma dirección" />
+    <meta
+      name="twitter:description"
+      content="Tecnología, desarrollo comercial y nuevas oportunidades bajo una visión compartida."
+    />
+    <meta name="twitter:image" content="https://www.blueskygroup.com.ar/favicon.png" />
   </head>
   <body>
     <div id="root"></div>
     <noscript>
       <style>
-        @font-face { font-family: Inter; font-style: normal; font-weight: 300 900; font-display: swap; src: url('/fonts/inter-latin.woff2') format('woff2'); }
-        body { margin: 0; font-family: Inter, Arial, sans-serif; background: #eef0f4; color: #0a0a0a; }
-        .noscript-hero { min-height: 100vh; background: #066fee; color: #fff; padding: 96px 32px 72px; }
-        .noscript-wrap { max-width: 1100px; margin: 0 auto; }
-        .noscript-title { margin: 0 0 48px; font-size: clamp(64px, 12vw, 160px); line-height: .9; letter-spacing: -.05em; text-transform: uppercase; font-weight: 900; }
-        .noscript-copy { max-width: 620px; border-left: 2px solid rgba(255,255,255,.25); padding-left: 28px; font-size: 18px; line-height: 1.7; }
-        .noscript-section { padding: 96px 32px; }
-        .noscript-section h2 { max-width: 1100px; margin: 0 auto 24px; font-size: clamp(40px, 8vw, 88px); line-height: .95; letter-spacing: -.03em; text-transform: uppercase; }
-        .noscript-section p { max-width: 720px; margin: 0 auto; color: #555; font-size: 18px; line-height: 1.75; }
+        @font-face {
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 300 900;
+          font-display: swap;
+          src: url('/fonts/inter-latin.woff2') format('woff2');
+        }
+        * {
+          box-sizing: border-box;
+        }
+        body {
+          margin: 0;
+          background: #eef0f4;
+          color: #0a0a0a;
+          font-family: Inter, Arial, sans-serif;
+          line-height: 1.6;
+        }
+        .noscript-hero {
+          padding: 72px 24px;
+          background: #066fee;
+          color: #fff;
+        }
+        .noscript-wrap {
+          max-width: 1080px;
+          margin: 0 auto;
+        }
+        .noscript-hero h1 {
+          margin: 0;
+          color: #fff;
+          font-size: clamp(47px, 8vw, 136px);
+          font-weight: 900;
+          line-height: 0.88;
+          letter-spacing: -0.035em;
+          text-transform: uppercase;
+        }
+        .noscript-hero h1 span {
+          display: block;
+        }
+        .noscript-hero .noscript-statement {
+          max-width: 680px;
+          font-size: 32px;
+          font-weight: 800;
+          line-height: 1.1;
+        }
+        .noscript-hero p {
+          max-width: 720px;
+          margin: 24px 0 0;
+          font-size: 18px;
+        }
+        .noscript-content {
+          padding: 64px 24px;
+        }
+        .noscript-content h2 {
+          max-width: 760px;
+          margin: 0 auto 34px;
+          font-size: 34px;
+          line-height: 1.1;
+        }
+        .noscript-grid {
+          display: grid;
+          max-width: 1080px;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+          margin: 0 auto;
+        }
+        .noscript-unit {
+          padding: 26px;
+          border: 1px solid #dcdfe3;
+          border-radius: 8px;
+          background: #fff;
+        }
+        .noscript-unit h3 {
+          margin: 34px 0 0;
+          font-size: 26px;
+        }
+        .noscript-unit p {
+          color: #555;
+        }
+        .noscript-unit a,
+        .noscript-legal a {
+          display: inline-flex;
+          min-height: 44px;
+          align-items: center;
+          color: #066fee;
+          font-weight: 800;
+        }
+        .noscript-contact {
+          padding: 64px 24px;
+          background: #066fee;
+          color: #fff;
+        }
+        .noscript-contact > div {
+          max-width: 1080px;
+          margin: 0 auto;
+        }
+        .noscript-contact h2 {
+          max-width: 760px;
+          margin: 0;
+          font-size: 34px;
+          line-height: 1.1;
+        }
+        .noscript-contact p {
+          max-width: 720px;
+          margin: 20px 0 26px;
+        }
+        .noscript-contact a {
+          display: inline-flex;
+          min-height: 48px;
+          align-items: center;
+          padding: 12px 22px;
+          border-radius: 999px;
+          background: #fff;
+          color: #066fee;
+          font-weight: 800;
+          text-decoration: none;
+        }
+        .noscript-legal {
+          max-width: 1080px;
+          margin: 0 auto;
+          padding: 0 24px 72px;
+        }
+        @media (max-width: 760px) {
+          .noscript-hero h1 {
+            font-size: 44px;
+          }
+        }
+        @media (max-width: 400px) {
+          .noscript-hero h1 {
+            font-size: 40px;
+          }
+        }
+        @media (max-width: 380px) {
+          .noscript-hero h1 {
+            font-size: 39px;
+          }
+          .noscript-hero .noscript-statement {
+            font-size: 27px;
+          }
+          .noscript-grid {
+            grid-template-columns: 1fr;
+          }
+        }
       </style>
       <main>
-        <section class="noscript-hero">
+        <header class="noscript-hero">
           <div class="noscript-wrap">
-            <h1 class="noscript-title">Blue Sky<br />Group</h1>
-            <div class="noscript-copy">
-              <strong>Holding de soluciones comerciales y tecnológicas para empresas.</strong>
-              <p>Construimos unidades especializadas para generar oportunidades, ordenar procesos comerciales e implementar tecnología útil para vender y operar mejor.</p>
-            </div>
+            <h1 aria-label="We Build What Moves Business"><span>We Build What</span><span>Moves Business</span></h1>
+            <p class="noscript-statement">
+              Conectamos capacidades para convertir ideas en soluciones con visión de largo plazo.
+            </p>
+            <p>
+              Reunimos implementación tecnológica, desarrollo comercial y exploración de nuevas
+              oportunidades digitales. Estamos abiertos a recibir consultas y conversar sobre
+              proyectos.
+            </p>
+          </div>
+        </header>
+        <section class="noscript-content" aria-labelledby="noscript-units">
+          <h2 id="noscript-units">Tres unidades, una misma dirección.</h2>
+          <div class="noscript-grid">
+            <article class="noscript-unit">
+              <h3>Blue Sky Forge</h3>
+              <p>Implementación tecnológica abierta a consultas y evaluación de proyectos.</p>
+              <a href="/forge">Conocer Forge</a>
+            </article>
+            <article class="noscript-unit">
+              <h3>Blue Sky Prospect</h3>
+              <p>Sistemas de prospectiva B2B actualmente en desarrollo.</p>
+              <a href="/prospect">Conocer Prospect</a>
+            </article>
+            <article class="noscript-unit">
+              <h3>Blue Sky Commerce</h3>
+              <p>Iniciativa futura orientada a explorar nuevas oportunidades digitales.</p>
+              <a href="/commerce">Conocer la visión</a>
+            </article>
           </div>
         </section>
-        <section class="noscript-section"><h2>Blue Sky Forge</h2><p>Unidad activa de implementación tecnológica para empresas que necesitan ordenar procesos comerciales y operativos con sistemas simples y útiles.</p></section>
-        <section class="noscript-section"><h2>Blue Sky Prospect</h2><p>Unidad en desarrollo, disponible para consulta, orientada a ayudar a empresas a ordenar su proceso comercial con IA y control humano.</p></section>
-        <section class="noscript-section"><h2>Blue Sky Commerce</h2><p>Próxima construcción del ecosistema Blue Sky Group, orientada a explorar nuevas formas de comercio digital.</p></section>
+        <section class="noscript-contact">
+          <div>
+            <h2>Estamos abiertos a recibir consultas y explorar proyectos.</h2>
+            <p>
+              Podés escribirnos para conversar sobre una necesidad tecnológica, un nuevo proyecto,
+              una alianza o una consulta institucional.
+            </p>
+            <a href="/contacto">Realizar una consulta</a>
+          </div>
+        </section>
+        <section class="noscript-legal" aria-label="Compliance">
+          <p>
+            Forge recibe consultas y evalúa posibles proyectos. Prospect continúa en desarrollo y
+            Commerce permanece como iniciativa futura. La formalización de cualquier proyecto está
+            sujeta a evaluación, acuerdos específicos y documentación aplicable.
+          </p>
+          <a href="/estado-y-alcance">Leer Compliance</a>
+          <span> · </span>
+          <a href="/privacidad">Privacidad</a>
+          <span> · </span>
+          <a href="/terminos">Términos</a>
+        </section>
       </main>
     </noscript>
     <script type="module" src="/src/main.jsx"></script>

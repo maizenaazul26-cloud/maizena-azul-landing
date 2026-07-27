@@ -1,5 +1,9 @@
 # BSG Visual & Motion Audit — Blue Sky Group Landing
 
+> **Documento histórico.** Describe una versión anterior de la landing y sus estados de producto
+> ya no son vigentes. La fuente actual es `src/data/siteContent.js`; la implementación y la
+> trazabilidad institucional se documentan en `docs/BSG_P0_P1_P2_TRACEABILITY.md`.
+
 **Fecha:** 2026-06-11
 **Tipo:** Auditoría read-only (no se modificó código de producción)
 **Alcance:** Estructura, diseño visual, narrativa, hero, navbar, mobile, animaciones, secuencia de marca, arquitectura de motion, backlog y prompts de ejecución.

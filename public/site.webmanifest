@@ -1,0 +1,17 @@
+{
+  "name": "Blue Sky Group",
+  "short_name": "Blue Sky",
+  "description": "Blue Sky Group articula tecnología, desarrollo comercial y nuevas oportunidades digitales.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef0f4",
+  "theme_color": "#066fee",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

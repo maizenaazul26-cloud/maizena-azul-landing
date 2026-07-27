@@ -1,638 +1,389 @@
-/* ═══════════════════════════════════════════════
-   SERVICE DETAIL VIEW — subpágina interna, funnel
-   Hero (marca + retorno + promesa) → Qué es →
-   Problema → Qué construimos → Para quién →
-   Cómo trabajamos → Casos de uso → Diferencial →
-   CTA final.
-   ═══════════════════════════════════════════════ */
-
-.service-view {
-  min-height: 100vh;
-  background: var(--bg-body);
-  animation: serviceViewIn 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+.unit-page {
+  background: var(--surface);
 }
 
-@keyframes serviceViewIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── 1. Hero: marca + retorno + promesa + CTAs ─ */
-.service-view__hero {
-  background: var(--primary);
-  padding: clamp(48px, 7vw, 72px) 0 clamp(48px, 7vw, 72px);
-}
-
-.service-view__hero-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-.service-view__title {
-  font-size: clamp(44px, 7.5vw, 88px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: var(--white);
-  line-height: 0.96;
-}
-
-.service-view__title:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 6px;
-  border-radius: var(--radius-sm);
-}
-
-/* Botón "volver": fino, chico, integrado al hero — no debe competir con
-   el título en jerarquía visual ni en peso de color. */
-.service-view__back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.85);
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 7px 14px;
-  border-radius: var(--radius-xl);
-  flex-shrink: 0;
-  white-space: nowrap;
-  margin-top: 10px;
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-}
-
-.service-view__back:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.45);
+.unit-hero {
+  padding: calc(var(--navbar-height) + 62px) 0 86px;
+  background: var(--color-brand-primary);
   color: var(--white);
 }
 
-.service-view__back:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 3px;
+.unit-page--commerce .unit-hero,
+.unit-page--commerce .unit-final-cta {
+  background: var(--surface-dark);
 }
 
-.service-view__subtitle {
-  font-size: clamp(19px, 2.4vw, 26px);
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--white);
-  max-width: 700px;
-  margin-bottom: 14px;
-}
-
-.service-view__hero-text {
-  font-size: 16px;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.88);
-  max-width: 640px;
-  margin-bottom: 28px;
-}
-
-.service-view__hero-actions {
+.breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-}
-
-/* ── CTAs compartidos (hero + final) ───────── */
-.service-view__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--primary);
-  background: var(--white);
-  padding: 16px 36px;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  transition: background var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.service-view__cta:hover {
-  background: #f4f7fb;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
-}
-
-.service-view__cta-ghost {
-  display: inline-flex;
-  align-items: center;
-  font-size: 15px;
-  font-weight: 700;
+  gap: 8px;
+  margin-bottom: 56px;
   color: var(--white);
-  padding: 16px 8px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-  transition: border-color var(--transition-fast);
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.service-view__cta-ghost:hover {
-  border-color: var(--white);
+.breadcrumb a:hover {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
-.service-view__cta:focus-visible,
-.service-view__cta-ghost:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+.unit-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(290px, 0.75fr);
+  gap: 90px;
+  align-items: end;
 }
 
-/* ── Body: ritmo editorial, sin vacíos exagerados ── */
-.service-view__section {
-  padding: clamp(40px, 5vw, 52px) 0;
-}
-
-/* Bloque alternativo (workflow) sobre fondo gris: diferencia visualmente
-   "cómo funciona el sistema" (blanco) de "cómo se trabaja con el cliente"
-   (gris), aunque comparten el mismo componente de steps. */
-.service-view__section--muted {
-  background: var(--bg-body);
-  border-radius: var(--radius-lg);
-  padding: clamp(40px, 5vw, 52px) clamp(24px, 4vw, 40px);
-}
-
-.service-view__section-heading {
-  font-size: clamp(26px, 3.6vw, 36px);
+.unit-hero__descriptor {
+  display: block;
+  margin-top: 0;
+  color: var(--white);
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: var(--text-dark);
-  margin-bottom: 24px;
-  max-width: 720px;
 }
 
-/* Cuando hay subheading, el heading queda con menos margen propio: el
-   aire lo aporta el subheading antes de los steps. */
-.service-view__section-heading:has(+ .service-view__section-subheading) {
-  margin-bottom: 8px;
+.unit-hero h1 {
+  max-width: 760px;
+  margin-top: 12px;
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 1;
 }
 
-.service-view__section-subheading {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-  max-width: 600px;
+.unit-hero h1:focus {
+  outline: 0;
+  box-shadow: none;
 }
 
-/* ── 2. Qué es Blue Sky Forge ────────────────── */
-.service-view__overview {
+.unit-hero__lead {
+  max-width: 750px;
+  margin-top: 26px;
+  color: var(--white);
+  font-size: 20px;
+}
+
+.unit-hero__state {
+  padding: 26px 0 8px 28px;
+  border-left: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.unit-hero__state > span {
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.unit-hero__state strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+.unit-hero__state p {
+  margin-top: 10px;
+  color: var(--white);
+  font-size: 14px;
+}
+
+.unit-hero__state small {
+  display: block;
+  margin-top: 22px;
+  color: var(--white);
+  font-size: 10px;
+}
+
+.unit-section {
+  padding: var(--section-y) 0;
   border-bottom: 1px solid var(--border);
 }
 
-.service-view__overview-grid {
+.unit-section h2 {
+  max-width: 760px;
+  font-size: 43px;
+  font-weight: 850;
+  line-height: 1.1;
+}
+
+.unit-section--muted {
+  background: var(--surface-soft);
+}
+
+.unit-section--dark {
+  background: var(--surface-dark);
+  color: var(--white);
+}
+
+.unit-split,
+.faq-section__grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 88px;
   align-items: start;
 }
 
-.service-view__overview-copy {
-  display: flex;
-  flex-direction: column;
+.unit-copy {
+  display: grid;
+  gap: 20px;
+  padding-top: 32px;
+  color: var(--body);
+  font-size: 17px;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.service-view__overview-copy p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--text-body);
+.capability-grid article {
+  min-height: 240px;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition:
+    border-color var(--motion-base) ease,
+    transform var(--motion-base) var(--motion-enter),
+    box-shadow var(--motion-base) ease;
 }
 
-.service-view__overview-highlight {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: var(--text-dark);
-  background: var(--white);
-  border-left: 3px solid var(--primary);
-  border-radius: var(--radius-sm);
-  padding: 20px 22px;
-  box-shadow: var(--shadow-card);
+.capability-grid article:hover {
+  border-color: var(--color-brand-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 38px rgba(10, 10, 10, 0.09);
 }
 
-/* ── 3. Problema ────────────────────────────── */
-/* minmax 240px → 4 columnas en desktop (container ~1100px), 8 dolores
-   quedan en 2 filas parejas de 4, sin cards sueltas. */
-.service-view__problem-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-  gap: 14px;
-  list-style: none;
-}
-
-.service-view__problem-item {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: var(--text-dark);
-  background: var(--white);
-  border-left: 3px solid var(--primary);
-  border-radius: var(--radius-sm);
-  padding: 18px 20px;
-  box-shadow: var(--shadow-card);
-}
-
-/* ── 4. Qué incluye: oferta destacada + capacidades complementarias ── */
-.service-view__categories-heading {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-
-.service-view__categories {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.service-view__category {
-  position: relative;
-  background: var(--white);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 28px;
-  box-shadow: var(--shadow-card);
-}
-
-/* Oferta de entrada: card independiente, fuera de la grilla 2x2, para que
-   se lea como un nivel distinto (la oferta concreta) de las capacidades
-   complementarias que vienen debajo. */
-.service-view__category--featured {
-  margin-bottom: 28px;
-  border-color: rgba(6, 111, 238, 0.3);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.service-view__category-tag {
-  display: inline-flex;
+.capability-grid article > span {
+  color: var(--color-brand-primary);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--primary);
-  background: var(--primary-glow);
-  border-radius: 100px;
-  padding: 4px 12px;
-  margin-bottom: 12px;
+  font-weight: 850;
 }
 
-.service-view__category-title {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--text-dark);
-  margin-bottom: 8px;
+.capability-grid h3 {
+  margin-top: 58px;
+  font-size: 21px;
 }
 
-.service-view__category-desc {
+.capability-grid p {
+  margin-top: 12px;
+  color: var(--body);
   font-size: 14px;
-  line-height: 1.5;
-  color: var(--text-body);
-  margin-bottom: 16px;
 }
 
-.service-view__category-examples {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-  margin-bottom: 18px;
+.deliverable-list {
+  border-top: 1px solid var(--border);
 }
 
-.service-view__category-examples li {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-glow);
-  border-radius: 100px;
-  padding: 5px 12px;
+.deliverable-list li {
+  display: grid;
+  min-height: 68px;
+  grid-template-columns: 46px 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  font-weight: 750;
 }
 
-.service-view__category-result {
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: var(--text-dark);
-  padding-top: 16px;
-  border-top: 1px solid var(--border-light);
+.deliverable-list span {
+  color: var(--color-brand-primary);
+  font-size: 11px;
+  font-weight: 850;
 }
 
-/* La card destacada da más protagonismo a descripción y resultado: los
-   chips quedan más discretos (mismo tono que el borde, no el azul de marca)
-   para no competir visualmente con el mensaje principal de la oferta. */
-.service-view__category--featured .service-view__category-examples li {
-  color: var(--text-dark);
-  background: var(--bg-body);
+.unit-method {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.service-view__category--featured .service-view__category-title {
+.unit-method li {
+  min-height: 250px;
+  padding: 24px 24px 20px 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.unit-method li + li {
+  padding-left: 24px;
+}
+
+.unit-method li:last-child {
+  border-right: 0;
+}
+
+.unit-method li > span {
+  color: var(--color-brand-primary);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.unit-method h3 {
+  margin-top: 54px;
   font-size: 20px;
 }
 
-.service-view__category--featured .service-view__category-desc {
-  font-size: 15px;
-}
-
-.service-view__category--featured .service-view__category-result {
-  font-size: 15px;
-}
-
-/* ── 5. Para quién ──────────────────────────── */
-/* minmax 250px → 4 columnas en desktop, 8 segmentos en 2 filas parejas. */
-.service-view__audience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-  gap: 12px;
-  list-style: none;
-}
-
-.service-view__audience-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.unit-method p {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.76);
   font-size: 14px;
-  font-weight: 600;
-  line-height: 1.45;
-  color: var(--text-dark);
-  background: var(--white);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
 }
 
-.service-view__audience-item svg {
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: var(--primary);
+.unit-limits {
+  background: var(--surface-soft);
 }
 
-/* ── 6. Cómo funciona / cómo se trabaja ─────── */
-/* auto-fit en vez de un número fijo de columnas: el mismo bloque se
-   reutiliza para procesos de distinta longitud (Forge: 5 pasos,
-   Prospect: 7 + 5 en workflow) sin dejar huérfanos en la última fila. */
-.service-view__steps {
+.plain-list {
+  border-top: 1px solid var(--border);
+  counter-reset: limit;
+}
+
+.plain-list li {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  list-style: none;
+  min-height: 68px;
+  grid-template-columns: 44px 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  color: var(--body);
+  font-weight: 700;
+  counter-increment: limit;
 }
 
-/* 6 pasos → 3x2 explícito (en vez de 5+1 huérfano con auto-fit). */
-.service-view__steps--count-6 {
-  grid-template-columns: repeat(3, 1fr);
+.plain-list li::before {
+  color: var(--color-brand-primary);
+  content: counter(limit, decimal-leading-zero);
+  font-size: 11px;
+  font-weight: 850;
 }
 
-.service-view__step {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-top: 16px;
-  border-top: 2px solid var(--border);
-}
-
-.service-view__step-number {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: 0.04em;
-}
-
-.service-view__step-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--text-dark);
-}
-
-.service-view__step-desc {
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--text-body);
-}
-
-/* ── 7. Casos de uso ────────────────────────── */
-.service-view__scenarios-note {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-top: -16px;
-  margin-bottom: 24px;
-}
-
-.service-view__scenarios-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 14px;
-  list-style: none;
-}
-
-.service-view__scenario {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--text-dark);
-  background: var(--bg-card);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-}
-
-/* ── 8. Diferencial: dos columnas ───────────── */
-.service-view__diff-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.service-view__diff-lead {
-  display: flex;
-  flex-direction: column;
-}
-
-.service-view__diff-lead .service-view__section-heading {
-  margin-bottom: 16px;
-}
-
-.service-view__diff-lead p {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: var(--primary);
-}
-
-.service-view__differentiators {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  list-style: none;
-}
-
-.service-view__differentiator {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--text-dark);
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.service-view__differentiator:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.service-view__differentiator svg {
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: var(--primary);
-}
-
-/* ── 9. CTA final ───────────────────────────── */
-.service-view__final {
-  background:
-    radial-gradient(ellipse 700px 380px at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%),
-    var(--primary);
-  padding: clamp(56px, 7vw, 88px) 0;
-}
-
-.service-view__final-inner {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.service-view__final-heading {
-  font-size: clamp(26px, 4vw, 40px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+.unit-final-cta {
+  padding: 96px 0;
+  background: var(--color-brand-primary);
   color: var(--white);
-  line-height: 1.08;
-  margin-bottom: 18px;
 }
 
-.service-view__final-text {
-  font-size: 16px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.88);
-  margin-bottom: 32px;
+.unit-final-cta__inner {
+  max-width: 870px;
 }
 
-.service-view__final-actions {
+.unit-final-cta h2 {
+  margin-top: 0;
+  font-size: 44px;
+}
+
+.unit-final-cta p {
+  max-width: 690px;
+  margin-top: 20px;
+  color: var(--white);
+}
+
+.unit-final-cta__actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-top: 32px;
 }
 
-.service-view__cta-ghost--on-primary {
-  color: var(--white);
-  padding: 16px 8px;
-}
-
-.service-view__back-bottom {
-  font-size: 14px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
-  padding: 10px 4px;
-  transition: color var(--transition-fast);
-}
-
-.service-view__back-bottom:hover {
-  color: var(--white);
-}
-
-.service-view__back-bottom:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-/* ── Responsive: tablet (1024px) ────────────── */
-@media (max-width: 1024px) {
-  .service-view__steps,
-  .service-view__steps--count-6 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .service-view__overview-grid {
+@media (max-width: 900px) {
+  .unit-hero__grid,
+  .unit-split,
+  .faq-section__grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 42px;
   }
 
-  .service-view__diff-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .unit-hero__state {
+    max-width: 620px;
+  }
+
+  .unit-copy {
+    max-width: 720px;
+    padding-top: 0;
+  }
+
+  .unit-method {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .unit-method li:nth-child(2) {
+    border-right: 0;
+  }
+
+  .unit-method li:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
 
-/* ── Responsive: tablet chica / mobile grande ── */
 @media (max-width: 768px) {
-  .service-view__hero-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  .unit-hero {
+    padding-top: calc(var(--navbar-height) + 38px);
+    padding-bottom: 62px;
   }
 
-  .service-view__back {
-    margin-top: 0;
+  .breadcrumb {
+    margin-bottom: 38px;
   }
 
-  .service-view__hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .unit-hero h1 {
+    font-size: 46px;
   }
 
-  .service-view__cta {
-    justify-content: center;
+  .unit-hero__lead {
+    font-size: 17px;
   }
 
-  .service-view__section {
-    padding: 40px 0;
+  .unit-hero__state {
+    padding: 22px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.34);
+    border-left: 0;
   }
 
-  .service-view__categories {
+  .unit-section h2,
+  .unit-final-cta h2 {
+    font-size: 35px;
+  }
+
+  .capability-grid,
+  .unit-method {
     grid-template-columns: 1fr;
   }
 
-  .service-view__steps,
-  .service-view__steps--count-6 {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .capability-grid article {
+    min-height: 215px;
   }
 
-  .service-view__final-actions {
-    flex-direction: column;
-    align-items: stretch;
+  .unit-method {
+    border-top: 0;
   }
 
-  .service-view__final-actions .service-view__cta {
-    justify-content: center;
+  .unit-method li,
+  .unit-method li + li,
+  .unit-method li:nth-child(n + 3) {
+    min-height: 0;
+    padding: 22px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 0;
   }
-}
 
-/* ── Accesibilidad ──────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .service-view {
-    animation: none;
+  .unit-method li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .unit-method h3 {
+    margin-top: 22px;
+  }
+
+  .unit-final-cta {
+    padding: 72px 0;
+  }
+
+  .unit-final-cta__actions {
+    display: grid;
+  }
+
+  .unit-final-cta__actions .button {
+    width: 100%;
   }
 }
